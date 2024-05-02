@@ -28,7 +28,7 @@ twitter_username: hyphenab
 github_username:  w38g0ru
 
 # Build settings
-theme: minima
+theme: chirpy
 plugins:
   - jekyll-feed
 
