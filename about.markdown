@@ -1,18 +1,11 @@
 ---
 layout: page
-title: About
+title: मेरो कुरा
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+मेरो बारेमा भन्नु पर्ने खासै केही छैन । यो वेबसाइट गिटहबमा होस्ट गरिएको छ । यसलाई स्टाटिक साइट जेनरेटर  [jekyllrb.com](https://jekyllrb.com/) प्रयोग गरी तयार गरिएको हो । म ब्लग चलाउन खोज्ने चाहिँ मान्छे चाहिँ हु तर नियमित चलाउन सक्ने खालको मान्छे हैन । सम्भवतः २००५/६ देखी चलाई रहेको [मेरो एउटा ब्लग](https://www.enepal.net.np/) मैले २०१६ देखी चलाउन छोडे । चलाउन छोडे भनेर साइट बन्द गरेको हैन । साइट चल्छ तर नयाँ कन्टेन्ट हुँदैन । 
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+यसलाई चाहिँ केही राम्रै गरुम भन्ने छ । खासमा मलाई मेरो पुराना ब्लगिङ्ग प्लेटफर्महरू मन नपरेर पनि चलाउन छोडेको हो ।  सबैले वर्ड प्रेसमा ब्लग चलाए पनि मलाई यसमा खासै रुचि लागेन ।  मलाई वेब स्पेसको खाँचो त हुन्न तर आफ्नै सर्भरमा पनि वर्ड प्रेस साइट होस्ट गर्ने झन्झट , अनि घरी घरीको वर्ड प्रेसको अपडेट, झ्याउ लाग्छ मलाई । त्यसैले मैले मेरो ब्लगहरू कहिले पनि वर्ड प्रेसमा चलाइन । [ब्लगरमा](https://blogger.com) चलाइन्थ्यो तर त्यसको पनि एडमिन ड्यासबोर्ड हेर्दा हेर्दा दिक्क लाग्न थाल्यो । अनि त्यो पनि चलाउन छोडियो । 
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+यो साइट चाहिँ अलि नियमित गर्छु झैँ छ । यो साइट [गिटहब पेज](https://pages.github.com/)मा होस्ट गरिएको छ । [jekyll](https://github.com/jekyll/jekyll) स्टाटिक साइट जेनरेटर प्रयोग गरेर कन्टेन्ट पोस्ट गरिन्छ । यसको लागी [गिटहब](https://github.com/) चलाउनै पर्यो । यसले मलाई गिटहब को नियमित र गहिराई मा पुगेर चलाउन सिकाउने छ भन्ने आस लिएको छु । 
