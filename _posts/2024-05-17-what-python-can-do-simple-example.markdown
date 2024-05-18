@@ -20,5 +20,5 @@ def pdf_to_excel(pdf_file_path, excel_file_path):
         for i, table in enumerate(tables):
             table.to_excel(writer, sheet_name=f'Sheet{i+1}')
 
-pdf_to_excel('https://wwwenepal.com.np/Enlisted-Online-Media-till-2081-01-04.pdf', 'pdf-to-excel.xlsx')
+pdf_to_excel('https://www.enepal.net.np/Enlisted-Online-Media-till-2081-01-04.pdf', 'pdf-to-excel.xlsx')
 </pre>
