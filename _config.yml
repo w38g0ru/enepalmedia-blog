@@ -41,8 +41,8 @@ social-network-links:
   youtube: "@AnishBhattarai"
   whatsapp: 9779842525125
 
-# Google Analytics
-google_analytics: UA—XXXXXXXX-X
+# Google Tag Manager
+gtag: G-P0HYK204K8
 
 # Build settings
 theme: minima
