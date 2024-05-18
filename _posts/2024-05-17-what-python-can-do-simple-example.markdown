@@ -32,3 +32,37 @@ combined_df.to_excel("Enlisted-Online-Media-List-Excel.xlsx", index=False)
 </pre>
 
 माथीको कोडले पिडिएफ फाईललाई एक्सलमा कन्भर्ट गर्दछ । यद्दपी एक्सल फाईलको डाटाहरु भद्रगोल हुन्छ । पहिलो दुईवटा कोलम खाली हुन्छन कुनै क्रस कुनैमा पहिलो कोलम बाट शुरु हुन्छ कुनैमा दोस्रो रो बाट । अब हाम्रो काम भनेको डाटालाई ठ्याक्क एक खालको डाटा एउटै कोलममा रहने गरी मिलाएर राख्नु हो । डाटा एक्सलमा भए हुनाले तपाई आफ्नो ईच्छा अनुसार यसलाई म्यानुवली पनि गर्न सक्नु हुन्छ । तर हामी पाईथन सिक्दै गरेको हुनाले यो काम पाईथन कोड लेखेर नै गरौ । 
+
+<pre>
+import pandas as pd
+
+# Read the Excel file
+df = pd.read_excel("Enlisted-Online-Media-List-Excel.xlsx")
+
+# Function to shift non-empty cells to the left in each row
+def shift_cells(row):
+    shifted_row = row[row.notnull()].tolist()
+    shifted_row.extend([None] * (len(row) - len(shifted_row)))
+    return pd.Series(shifted_row, index=row.index)
+
+# Shift cells in each row
+df = df.apply(shift_cells, axis=1)
+
+# Write the modified DataFrame to a new Excel file
+df.to_excel("shift-non-empty-cells-to-the-left.xlsx", index=False)
+</pre>
+
+अब हेर्दा एक्सल फाईलको रो ३० अनि नमिले जस्तो देखी , यसलाई डिलिट गर्दिम । 
+<pre>
+    import pandas as pd
+
+# Read the Excel file
+df = pd.read_excel("shift-non-empty-cells-to-the-left.xlsx")
+
+# Drop rows where the third column (index 2 in zero-based indexing) is empty
+df = df.dropna(subset=[df.columns[4]])
+
+# Write the modified DataFrame to a new Excel file
+df.to_excel("drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx", index=False)
+
+</pre>
