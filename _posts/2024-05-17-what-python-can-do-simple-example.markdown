@@ -54,7 +54,7 @@ df.to_excel("shift-non-empty-cells-to-the-left.xlsx", index=False)
 
 यदी कुनै रो मा वेब ठेगाना छैन भने त्यो रो पुरै डिलिट गर्ने 
 <pre>
-    import pandas as pd
+import pandas as pd
 
 # Read the Excel file
 df = pd.read_excel("shift-non-empty-cells-to-the-left.xlsx")
@@ -64,5 +64,4 @@ df = df.dropna(subset=[df.columns[4]])
 
 # Write the modified DataFrame to a new Excel file
 df.to_excel("drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx", index=False)
-
 </pre>
