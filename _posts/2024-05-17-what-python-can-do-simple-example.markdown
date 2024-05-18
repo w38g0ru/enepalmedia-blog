@@ -52,7 +52,14 @@ df = df.apply(shift_cells, axis=1)
 # Write the modified DataFrame to a new Excel file
 df.to_excel("shift-non-empty-cells-to-the-left.xlsx", index=False)
 </pre>
-माथिको कोडले यदि कुनै रो (row) मा वेब ठेगाना छैन भने त्यो रो (row) पुरै डिलिट गर्दिन्छ । पिडिएफ बाट एक्सलमा कन्भर्ट गर्ने क्रममा खाली रो हरू आएका पनि हुन सक्छन । [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/shift-non-empty-cells-to-the-left.xlsx)  
+
+यो कोडले पहिले Excel फाइललाई pandas को प्रयोग गरेर पढ्छ। त्यसपछि, प्रत्येक पङ्क्तिमा (row) भएका गैर-खाली कोषहरू (non-empty cells) लाई बायाँतिर सर्छ र खाली कोषहरूलाई दायाँतिर पठाउँछ। अन्त्यमा, संशोधित DataFrame लाई नयाँ Excel फाइलमा लेख्छ। यहाँ कसरी काम गर्छ भनेर विस्तृत वर्णन छ:
+
+Excel फाइल पढ्नुहोस्: pd.read_excel("Enlisted-Online-Media-List-Excel.xlsx") ले दिइएको फाइललाई DataFrame मा पढ्छ।
+शिफ्ट गर्ने कार्य: shift_cells नामक एक फङ्क्शनले प्रत्येक पङ्क्तिमा भएका गैर-खाली कोषहरूलाई (non-null cells) बायाँतिर सर्छ। यसले पहिलो पङ्क्तिमा सबै गैर-खाली कोषहरूलाई राख्छ र बाँकीलाई None ले भरिन्छ।
+DataFrame मा शिफ्ट गर्नुहोस्: df.apply(shift_cells, axis=1) ले प्रत्येक पङ्क्तिमा शिफ्ट गर्ने फङ्क्शनलाई लागू गर्छ।
+नयाँ Excel फाइलमा लेख्नुहोस्: संशोधित DataFrame लाई df.to_excel("shift-non-empty-cells-to-the-left.xlsx", index=False) ले नयाँ Excel फाइलमा लेख्छ।
+यसरी, यस कोडले Excel पङ्क्तिहरूमा रहेका सबै गैर-खाली कोषहरूलाई बायाँतिर सर्छ र सबै खाली कोषहरूलाई पङ्क्तिको अन्त्यमा पठाउँछ।
 <pre>
 import pandas as pd
 
@@ -65,7 +72,7 @@ df = df.dropna(subset=[df.columns[4]])
 # Write the modified DataFrame to a new Excel file
 df.to_excel("drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx", index=False)
 </pre>
-डेटा अझै पनि हामीले सोचे जस्तो भा छैन । अनलाईनको वेब ठेगाना एउटै कोलम मा राख्नको लागी हामी 
+माथिको कोडले यदि कुनै रो (row) मा वेब ठेगाना छैन भने त्यो रो (row) पुरै डिलिट गर्दिन्छ । पिडिएफ बाट एक्सलमा कन्भर्ट गर्ने क्रममा खाली रो हरू आएका पनि हुन सक्छन । [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/drop-rows-where-the-third-column(zero-based%20indexing)-is-empty.xlsx) 
 <pre>
 import pandas as pd
 
@@ -136,7 +143,7 @@ for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=8, max_col=8):  #
 wb.save('List-with-Kantipur-numbers-to-English-numbers.xlsx')
 
 </pre>
-अनाव
+यो कोडले openpyxl लाइब्रेरी प्रयोग गरेर पहिले बनाइएको Excel फाइललाई लोड गर्दछ र त्यसको 'MOBILE' स्तम्भमा रहेका सबै सेलहरूमा गएर कान्तिपुर अक्षरहरूलाई अंग्रेजी अंकमा रूपान्तरण गर्दछ। अन्त्यमा, यो संशोधित Excel फाइललाई 'List-with-Kantipur-numbers-to-English-numbers.xlsx' नामक नयाँ फाइलमा सेभ गर्दछ।
 <pre>
 import pandas as pd
 
@@ -150,7 +157,7 @@ df = df[columns_to_keep]
 # Save the updated DataFrame to a new Excel file
 df.to_excel("drop-all-columns-after-I.xlsx", index=False)
 </pre>
-एउटा भन्दा बढी मोबाईल फोन नम्बरहरु कमा दिएर एउटै सेलमा राखीएको हुनाले त्यसलाई टुक्राएर छुट्टै सेलमा राख्ने 
+यो कोडले "List-with-Kantipur-numbers-to-English-numbers.xlsx" नामक Excel फाइललाई pandas को प्रयोग गरेर पढ्नुहोस्। त्यसपछि, स्तम्भ 'I' सम्मको सबै स्तम्भहरूलाई राख्नुहोस् र 'I' भन्दा पछि का सबै स्तम्भहरूलाई हटाउनुहोस्। अन्त्यमा, संशोधित DataFrame लाई "drop-all-columns-after-I.xlsx" नामक नयाँ Excel फाइलमा सेभ गर्दछ।
 <pre>
 import pandas as pd
 
@@ -174,7 +181,7 @@ df[email_columns] = email_addresses_split
 # Save the updated DataFrame to a new Excel file
 df.to_excel("split-the-values-in-column-H-and-I-into-separate-columns.xlsx", index=False)
 </pre>
-ईमेल र मोबाईल नम्बरलाई 
+यो कोडले "drop-all-columns-after-I.xlsx" नामक Excel फाइललाई पढेर प्रथम पङ्क्तिमा रहेको 'फोन नम्बर' (स्तम्भ 'H') र 'इमेल ठेगाना' (स्तम्भ 'I') को मानहरूलाई अलग अलग स्तम्भमा खण्डित गर्दछ। अन्त्यमा, संशोधित DataFrame लाई "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक नयाँ Excel फाइलमा सेभ गर्दछ।
 <pre>
 import pandas as pd
 
@@ -198,7 +205,9 @@ df[email_columns] = email_addresses_split
 # Save the updated DataFrame to a new Excel file
 df.to_excel("split-the-values-in-column-H-and-I-into-separate-columns.xlsx", index=False)
 </pre>
-हेडर रिनेम गर्ने 
+यो कोडले "drop-all-columns-after-I.xlsx" नामक Excel फाइललाई पढेर प्रथम पङ्क्तिमा रहेको 'फोन नम्बर' (स्तम्भ 'H') र 'इमेल ठेगाना' (स्तम्भ 'I') को मानहरूलाई अलग अलग स्तम्भमा खण्डित गर्दछ। अन्त्यमा, संशोधित DataFrame लाई "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक नयाँ Excel फाइलमा सेभ गर्दछ।
+
+यो कोडले "drop-all-columns-after-I.xlsx" नामक Excel फाइललाई पढेर पहिले पङ्क्तिमा रहेको 'Phone' (स्तम्भ 'H') र 'Email' (स्तम्भ 'I') को मानहरूलाई अलग अलग स्तम्भमा खण्डित गर्दछ। अन्त्यमा, संशोधित DataFrame लाई "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक नयाँ Excel फाइलमा सेभ गर्दछ।
 <pre>
     import pandas as pd
 
@@ -217,8 +226,9 @@ df.rename(columns={"Unnamed: 0": "SN", "kmfOn g=": "REG_NO","Unnamed: 1":"RED_DA
 df.to_excel("rename-the-headers-all-data.xlsx", index=False)
 
 </pre>
+यो कोडले "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक Excel फाइललाई पढेर स्तम्भहरूको नाम नयाँ नाममा रेनेम गर्दछ। नयाँ नामहरूको सूचीलाई प्रिन्ट गरिएको छ र अन्त्यमा संशोधित DataFrame लाई "rename-the-headers-all-data.xlsx" नामक नयाँ Excel फाइलमा सेभ गरिएको छ।
 
-jes
+यो कोडले "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक Excel फाइललाई पढेर प्रथम पङ्क्तिमा रहेको स्तम्भहरूको नाम नयाँ नाममा रेनेम गर्दछ। नयाँ नामहरूको सूचीलाई प्रिन्ट गरिएको छ र अन्त्यमा संशोधित DataFrame लाई "rename-the-headers-all-data.xlsx" नामक नयाँ Excel फाइलमा सेभ गरिएको छ।
 <pre>
     import pandas as pd
 
@@ -232,7 +242,7 @@ json_data = df.to_json(orient='records', lines=True)
 with open('rename-the-headers-all-data.json', 'w') as f:
     f.write(json_data)
 </pre>
-वार्षिक 
+यो कोडले "rename-the-headers-all-data.xlsx" नामक Excel फाइललाई पढेर त्यसलाई JSON डाटामा रुपान्तरित गर्दछ। त्यसपछि, त्यस JSON डाटालाई "rename-the-headers-all-data.json" नामक फाइलमा राख्दछ।
 <pre>
     import pandas as pd
 
@@ -251,8 +261,7 @@ with pd.ExcelWriter('group-the-data-by-the-reg-year.xlsx') as writer:
 
 print("Data divided into separate sheets based on the 4-digit numbers in column D.")
 </pre>
-हुईज डाटा अपडेट
-
+यो कोडले "rename-the-headers-all-data.xlsx" नामक Excel फाइललाई पढ्ने छ र डाटालाई 'RED_DATE_NP' स्तम्भको पहिले ४ अंकलाई आधारमा समूह गर्दछ। त्यसपछि, प्रत्येक समूहलाई अलग-अलग शीटमा लेखिन्छ र "group-the-data-by-the-reg-year.xlsx" नामक नयाँ Excel फाइलमा राखिन्छ। शीटहरूलाई 'RED_DATE_NP' स्तम्भको ४ अंकीय संख्याहरूको आधारमा नामकरण गरिएको छ। कोडले "Data divided into separate sheets based on the 4-digit numbers in column D." भन्ने सन्देश प्रिन्ट गर्दछ।
 <pre>
     import pandas as pd
 import whois
@@ -329,3 +338,6 @@ with pd.ExcelWriter('group-the-data-by-the-reg-year.xlsx', mode='a', if_sheet_ex
     df_updated.to_excel(writer, sheet_name='BS_2070', index=False)
 
 </pre>
+यो कोडले 'group-the-data-by-the-reg-year.xlsx' नामक एक्सेल फाइलको निश्चित शीट नाम 'BS_2070' संग पढ्नुहोस्, प्रत्येक डोमेनका लागि WHOIS जानकारी हाल्ने गर्दछ, WHOIS डेटालाई फार्म्याट गर्दछ, र यसलाई मूल डेटाफ्रेममा 'Email_3' स्तम्भको ठाउँमा हाल्ने छ। अपडेट गरिएको डेटाफ्रेमलाई त्यस्तो एक्सेल फाइलमा र शीटमा पुन:लेखिएको छ।
+
+यस कोडमा whois लाइब्रेरी प्रयोग गरिएको छ जसले डोमेनका लागि WHOIS जानकारी प्राप्त गर्दछ, तपाईंले यो कोडलाई प्रायोगिक बनाउनका लागि python-whois लाइब्रेरी इन्स्टल गर्नुपर्छ (pip install python-whois). कृपया सुनिश्चित गर्नुहोस् कि एक्सेल फाइलमा 'BS_2070' नामक शीट र 'URL' स्तम्भ छ र सो शीटमा छ।
