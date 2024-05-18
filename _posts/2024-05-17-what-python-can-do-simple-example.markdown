@@ -11,17 +11,22 @@ date:   2024-05-17 20:38:12 +0545
 # Install necessary libraries
 # !pip install tabula-py pandas
 
+import requests
 import tabula
 import pandas as pd
 
-def pdf_to_excel(pdf_file_path, excel_file_path):
-    # Read PDF file
-    tables = tabula.read_pdf(pdf_file_path, pages='all')
+# Download the PDF file
+pdf_url = "https://districts.enepal.net.np/Enlisted-Online-Media-till-2081-01-04.pdf"
+response = requests.get(pdf_url, headers={'User-Agent': 'Mozilla/5.0'})
+local_pdf_path = "Enlisted-Online-Media.pdf"
 
-    # Write each table to a separate sheet in the Excel file
-    with pd.ExcelWriter(excel_file_path) as writer:
-        for i, table in enumerate(tables):
-            table.to_excel(writer, sheet_name=f'Sheet{i+1}')
+with open(local_pdf_path, 'wb') as file:
+    file.write(response.content)
 
-pdf_to_excel('https://districts.enepal.net.np/Enlisted-Online-Media-till-2081-01-04.pdf', 'pdf-to-excel.xlsx')
+# Read and combine tables from the downloaded PDF
+tables = tabula.read_pdf(local_pdf_path, pages='all', multiple_tables=True)
+combined_df = pd.concat(tables, ignore_index=True)
+
+# Write the combined DataFrame to a single sheet in the Excel file
+combined_df.to_excel("Enlisted-Online-Media-List-Excel.xlsx", index=False)
 </pre>
