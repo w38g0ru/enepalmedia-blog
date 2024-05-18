@@ -7,6 +7,7 @@ date:   2024-05-17 20:38:12 +0545
 
 यसको लागि सबैभन्दा पहिले हामीले प्रेसकाउन्सिल ले उपलब्ध गराएको डाटा (जुन पिडिएफ फाईल) मा हुन्छ त्यसलाई माईक्रोसफ्ट एक्सल फर्माट (xlsx) मा एक्सपोर्ट गर्दछौ । यो ट्युटोरियल तयार गर्दा सम्मको [बिबरण](https://www.presscouncilnepal.gov.np/np/wp-content/uploads/2024/04/Enlisted-Online-Media-till-2081-01-04.pdf) मा भेट्न सकिन्छ तर यो लिङ्क ब्रेक हुन सक्ने सम्भावना पनि उत्तिकै रहेकोले यसलाई हामी [क्लाउड फ्लेयरमा अपलोड गरेर राखेका छौ](https://districts.enepal.net.np/Enlisted-Online-Media-till-2081-01-04.pdf) । 
 
+
 <pre>
 # Install necessary libraries
 # !pip install tabula-py pandas
@@ -31,7 +32,7 @@ combined_df = pd.concat(tables, ignore_index=True)
 combined_df.to_excel("Enlisted-Online-Media-List-Excel.xlsx", index=False)
 </pre>
 
-माथीको कोडले पिडिएफ फाईललाई एक्सलमा कन्भर्ट गर्दछ ([डाउनलोड गर्न यहाँ क्लिक गर्नुहोस ](https://districts.enepal.net.np/Enlisted-Online-Media-List-Excel.xlsx)) । यद्दपी एक्सल फाईलको डाटाहरु भद्रगोल हुन्छ । पहिलो दुईवटा कोलम खाली हुन्छन कुनै कुनैमा पहिलो कोलम बाट डेटा शुरु हुन्छ कुनैमा दोस्रो रो बाट । अब हाम्रो काम भनेको डाटालाई ठ्याक्क मिलाएर राख्नु पनि हो । डाटा एक्सलमा भएको हुनाले तपाई आफ्नो ईच्छा अनुसार यसलाई म्यानुवली पनि गर्न सक्नु हुन्छ । तर हामी पाईथन सिक्दै गरेको हुनाले यो काम पाईथन कोड लेखेर गर्छौ । 
+माथिको कोडले पिडिएफ फाइललाई एक्सलमा कन्भर्ट गर्दछ । ([डाउनलोड गर्न यहाँ क्लिक गर्नुहोस्](https://districts.enepal.net.np/Enlisted-Online-Media-List-Excel.xlsx)) यद्यपि एक्सल फाइलको डाटाहरू भद्रगोल छन् । कतै पहिलो दुई वटा कोलम खाली छन् कुनै कुनैमा पहिलो कोलम बाट डेटा सुरु हुन्छ कुनैमा दोस्रो कोलम बाट । अब हाम्रो काम भनेको डाटालाई ठ्याक्क मिलाएर राख्नु पनि हो । डाटा एक्सलमा भएको हुनाले तपाई आफ्नो इच्छा अनुसार यसलाई म्यान वली पनि गर्न सक्नु हुन्छ । तर हामी पाईथन सिक्दै गरेको हुनाले यो काम पाईथन कोड लेखेर गर्छौ ।
 
 <pre>
 import pandas as pd
@@ -51,7 +52,7 @@ df = df.apply(shift_cells, axis=1)
 # Write the modified DataFrame to a new Excel file
 df.to_excel("shift-non-empty-cells-to-the-left.xlsx", index=False)
 </pre>
-यदी कुनै रो (row) मा वेब ठेगाना छैन भने त्यो रो (row) पुरै डिलिट गर्दिने । पिडिएफ बाट एक्सलमा कन्भर्ट गर्ने क्रममा खाली रो हरु आएका पनि हुन कस्छन । [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/shift-non-empty-cells-to-the-left.xlsx)  
+माथिको कोडले यदि कुनै रो (row) मा वेब ठेगाना छैन भने त्यो रो (row) पुरै डिलिट गर्दिन्छ । पिडिएफ बाट एक्सलमा कन्भर्ट गर्ने क्रममा खाली रो हरू आएका पनि हुन सक्छन । [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/shift-non-empty-cells-to-the-left.xlsx)  
 <pre>
 import pandas as pd
 
