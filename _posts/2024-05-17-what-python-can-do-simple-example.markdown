@@ -136,3 +136,42 @@ for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=8, max_col=8):  #
 wb.save('List-with-Kantipur-numbers-to-English-numbers.xlsx')
 
 </pre>
+अनाव
+<pre>
+import pandas as pd
+
+# Read the Excel file
+df = pd.read_excel("List-with-Kantipur-numbers-to-English-numbers.xlsx")
+
+# Keep columns up to 'I' and drop all columns after 'I'
+columns_to_keep = df.columns[:df.columns.get_loc('Unnamed: 4') + 1]
+df = df[columns_to_keep]
+
+# Save the updated DataFrame to a new Excel file
+df.to_excel("drop-all-columns-after-I.xlsx", index=False)
+</pre>
+एउटा भन्दा बढी मोबाईल फोन नम्बरहरु कमा दिएर एउटै सेलमा राखीएको हुनाले त्यसलाई टुक्राएर छुट्टै सेलमा राख्ने 
+<pre>
+import pandas as pd
+
+# Read the Excel file
+df = pd.read_excel("drop-all-columns-after-I.xlsx")
+
+# Split the values in column H (phone numbers) into separate columns
+phone_numbers_split = df['cgnfOgsf gfd'].str.split(',', expand=True)
+phone_columns = [f'Phone_{i+1}' for i in range(phone_numbers_split.shape[1])]
+df[phone_columns] = phone_numbers_split
+
+# Split the values in column I (email addresses) into separate columns
+email_addresses_split = df['Unnamed: 4'].str.split(',', expand=True)
+email_columns = [f'Email_{i+1}' for i in range(email_addresses_split.shape[1])]
+df[email_columns] = email_addresses_split
+
+# Optional: Drop the original H and I columns if no longer needed
+# df.drop(columns=['H', 'I'], inplace=True)
+
+
+# Save the updated DataFrame to a new Excel file
+df.to_excel("split-the-values-in-column-H-and-I-into-separate-columns.xlsx", index=False)
+</pre>
+</pre>
