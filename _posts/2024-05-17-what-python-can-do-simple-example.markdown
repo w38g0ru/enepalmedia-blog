@@ -174,4 +174,158 @@ df[email_columns] = email_addresses_split
 # Save the updated DataFrame to a new Excel file
 df.to_excel("split-the-values-in-column-H-and-I-into-separate-columns.xlsx", index=False)
 </pre>
+ईमेल र मोबाईल नम्बरलाई 
+<pre>
+import pandas as pd
+
+# Read the Excel file
+df = pd.read_excel("drop-all-columns-after-I.xlsx")
+
+# Split the values in column H (phone numbers) into separate columns
+phone_numbers_split = df['cgnfOgsf gfd'].str.split(',', expand=True)
+phone_columns = [f'Phone_{i+1}' for i in range(phone_numbers_split.shape[1])]
+df[phone_columns] = phone_numbers_split
+
+# Split the values in column I (email addresses) into separate columns
+email_addresses_split = df['Unnamed: 4'].str.split(',', expand=True)
+email_columns = [f'Email_{i+1}' for i in range(email_addresses_split.shape[1])]
+df[email_columns] = email_addresses_split
+
+# Optional: Drop the original H and I columns if no longer needed
+# df.drop(columns=['H', 'I'], inplace=True)
+
+
+# Save the updated DataFrame to a new Excel file
+df.to_excel("split-the-values-in-column-H-and-I-into-separate-columns.xlsx", index=False)
+</pre>
+हेडर रिनेम गर्ने 
+<pre>
+    import pandas as pd
+
+# Read the Excel file
+df = pd.read_excel("split-the-values-in-column-H-and-I-into-separate-columns.xlsx")
+
+# Print original headers
+print("Original Headers:", df.columns.tolist())
+
+# Rename the headers
+df.rename(columns={"Unnamed: 0": "SN", "kmfOn g=": "REG_NO","Unnamed: 1":"RED_DATE_NP","btf g=":"URL","Unnamed: 2":"PUBLICATION","btf ldlt":"ADDRESS","Unnamed: 3":"PUBLISHER","cgnfOgsf gfd":"CONTACT","Unnamed: 4":"EMAIL"}, inplace=True)
+
+# Print new headers
+# print("New Headers:", df.columns.tolist())
+# Save the updated DataFrame to a new Excel file
+df.to_excel("rename-the-headers-all-data.xlsx", index=False)
+
+</pre>
+
+jes
+<pre>
+    import pandas as pd
+
+# Read the Excel file
+df = pd.read_excel('rename-the-headers-all-data.xlsx')
+
+# Convert the DataFrame to JSON
+json_data = df.to_json(orient='records', lines=True)
+
+# Write the JSON data to a file
+with open('rename-the-headers-all-data.json', 'w') as f:
+    f.write(json_data)
+</pre>
+वार्षिक 
+<pre>
+    import pandas as pd
+
+# Load the Excel file
+file_path = 'rename-the-headers-all-data.xlsx'
+df = pd.read_excel(file_path, sheet_name='Sheet1')
+
+# Group the data by the first 4 digits of REG_DATE
+grouped = df.groupby(df['RED_DATE_NP'].astype(str).str[:4])
+
+# Create a new Excel file for each group
+with pd.ExcelWriter('group-the-data-by-the-reg-year.xlsx') as writer:
+    for name, group in grouped:
+        # Write each group to a separate sheet
+        group.to_excel(writer, sheet_name=f'BS_{name}', index=False)
+
+print("Data divided into separate sheets based on the 4-digit numbers in column D.")
+</pre>
+हुईज डाटा अपडेट
+
+<pre>
+    import pandas as pd
+import whois
+from datetime import datetime
+
+# Read the Excel file and the specific sheet
+df = pd.read_excel('group-the-data-by-the-reg-year.xlsx', sheet_name='BS_2070')
+
+# Initialize lists to store WHOIS information
+whois_data = {
+    'Registrar': [],
+    'Whois_Server': [],
+    'Referral_URL': [],
+    'Updated_Date': [],
+    'Creation_Date': [],
+    'Expiration_Date': [],
+    'Name_Servers': [],
+    'Status': [],
+    'Emails': [],
+    'Dnssec': [],
+    'Name': [],
+    'Org': [],
+    'Address': [],
+    'City': [],
+    'State': [],
+    'Registrant_Postal_Code': [],
+    'Country': []
+}
+
+# Helper function to format dates
+def format_date(date):
+    if isinstance(date, list):
+        return [d.strftime('%d-%m-%Y') if isinstance(d, datetime) else None for d in date]
+    return date.strftime('%d-%m-%Y') if isinstance(date, datetime) else None
+
+# Fetch WHOIS information for each domain
+for domain in df['URL']:
+    try:
+        domain_info = whois.whois(domain)
+        whois_data['Registrar'].append(domain_info.registrar)
+        whois_data['Whois_Server'].append(domain_info.whois_server)
+        whois_data['Referral_URL'].append(domain_info.referral_url)
+        whois_data['Updated_Date'].append(format_date(domain_info.updated_date))
+        whois_data['Creation_Date'].append(format_date(domain_info.creation_date))
+        whois_data['Expiration_Date'].append(format_date(domain_info.expiration_date))
+        whois_data['Name_Servers'].append(domain_info.name_servers)
+        whois_data['Status'].append(domain_info.status)
+        whois_data['Emails'].append(domain_info.emails)
+        whois_data['Dnssec'].append(domain_info.dnssec)
+        whois_data['Name'].append(domain_info.name)
+        whois_data['Org'].append(domain_info.org)
+        whois_data['Address'].append(domain_info.address)
+        whois_data['City'].append(domain_info.city)
+        whois_data['State'].append(domain_info.state)
+        whois_data['Registrant_Postal_Code'].append(domain_info.registrant_postal_code)
+        whois_data['Country'].append(domain_info.country)
+    except whois.parser.PywhoisError as e:
+        print(f"Error fetching WHOIS info for {domain}: {e}")
+        # Append None for all columns if there is an error
+        for key in whois_data.keys():
+            whois_data[key].append(None)
+
+# Create a new DataFrame for WHOIS data
+whois_df = pd.DataFrame(whois_data)
+
+# Find the index of the Email_3 column to place the WHOIS data next to it
+email_3_index = df.columns.get_loc('Email_3') + 1
+
+# Insert the WHOIS data into the original DataFrame at the specified location
+df_updated = pd.concat([df.iloc[:, :email_3_index], whois_df, df.iloc[:, email_3_index:]], axis=1)
+
+# Write the updated DataFrame back to the same Excel file and sheet
+with pd.ExcelWriter('group-the-data-by-the-reg-year.xlsx', mode='a', if_sheet_exists='replace') as writer:
+    df_updated.to_excel(writer, sheet_name='BS_2070', index=False)
+
 </pre>
