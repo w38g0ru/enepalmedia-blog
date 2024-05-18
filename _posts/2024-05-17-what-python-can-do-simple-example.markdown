@@ -106,3 +106,33 @@ for shift in shifts:
 # Save the modified DataFrame to a new Excel file
 df.to_excel('shift-the-entire-row-left-or-right.xlsx', index=False)
 </pre>
+मोबाईल नम्बरहरु ट्रेडिशनल नेपाली फन्ट (प्रिती कान्तीपुर) मा कमा दिएर लेखेको छ । यसलाई अंग्रेजीमा रुपान्तरण गरौ । 
+<pre>
+from openpyxl import load_workbook
+
+# Load the Excel file
+wb = load_workbook('shift-the-entire-row-left-or-right.xlsx')
+ws = wb.active
+
+# Define a mapping for Kantipur numbers to English numbers
+kantipur_to_english = {
+    ')': '0', '!': '1', '@': '2', '#': '3', '$': '4',
+    '%': '5', '^': '6', '&': '7', '*': '8', '(': '9',
+}
+
+# Iterate over all cells in the 'MOBILE' column and convert Kantipur numbers to English numbers
+for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=8, max_col=8):  # Assuming 'MOBILE' is the 9th column
+    for cell in row:
+        if isinstance(cell.value, str):
+            converted_chars = []
+            for char in cell.value:
+                if char in kantipur_to_english:
+                    converted_chars.append(kantipur_to_english[char])
+                else:
+                    converted_chars.append(char)
+            cell.value = ''.join(converted_chars)
+
+# Save the modified Excel file
+wb.save('List-with-Kantipur-numbers-to-English-numbers.xlsx')
+
+</pre>
