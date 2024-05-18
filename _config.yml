@@ -18,14 +18,23 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
+# Name of website
+title: साइबर चौतारी 2.0
+
+# Your name to show in the footer
+author: Anish Bhattarai
+
 title: ई-मिडिया ब्लग
 email: anish@anish.com.np
 description: >- # this means to ignore newlines until "baseurl:"
   साइबर चौतारी 2.0
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://www.enepal.net.np/" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: hyphenab
 github_username:  w38g0ru
+
+# Google Analytics
+google_analytics: UA—XXXXXXXX-X
 
 # Build settings
 theme: minima
