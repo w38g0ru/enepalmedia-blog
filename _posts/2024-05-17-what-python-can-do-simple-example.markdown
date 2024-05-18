@@ -65,3 +65,44 @@ df = df.dropna(subset=[df.columns[4]])
 # Write the modified DataFrame to a new Excel file
 df.to_excel("drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx", index=False)
 </pre>
+डेटा अझै पनि हामीले सोचे जस्तो भा छैन । अनलाईनको वेब ठेगाना एउटै कोलम मा राख्नको लागी 
+<pre>
+import pandas as pd
+
+file_path = 'drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx'
+
+# Load the Excel file into a DataFrame
+df = pd.read_excel(file_path)
+
+# Define a list of shifts with row range and direction (left or right)
+shifts = [
+    (range(1986, 1992), 'right'),  # Range of rows
+    (range(1993, 1996), 'right'),  # Range of rows
+    (range(1998, 2010), 'right'),  # Range of rows
+    (range(2011, 2014), 'right'),  # Range of rows
+    (range(2015, 2019), 'right'),  # Range of rows
+    (37, 'right')  # Individual row
+]
+
+for shift in shifts:
+    rows, direction = shift
+    if isinstance(rows, range):
+        for row in rows:
+            if direction == 'left':
+                df.iloc[row, :-1] = df.iloc[row, 1:].values
+                df.iloc[row, -1] = None  # Optional: clear the last cell
+            elif direction == 'right':
+                df.iloc[row, 1:] = df.iloc[row, :-1].values
+                df.iloc[row, 0] = None  # Optional: clear the first cell
+    else:
+        row = rows
+        if direction == 'left':
+            df.iloc[row, :-1] = df.iloc[row, 1:].values
+            df.iloc[row, -1] = None  # Optional: clear the last cell
+        elif direction == 'right':
+            df.iloc[row, 1:] = df.iloc[row, :-1].values
+            df.iloc[row, 0] = None  # Optional: clear the first cell
+
+# Save the modified DataFrame to a new Excel file
+df.to_excel('shift-the-entire-row-left-or-right.xlsx', index=False)
+</pre>
