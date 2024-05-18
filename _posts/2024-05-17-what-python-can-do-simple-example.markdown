@@ -341,3 +341,18 @@ with pd.ExcelWriter('group-the-data-by-the-reg-year.xlsx', mode='a', if_sheet_ex
 यो कोडले 'group-the-data-by-the-reg-year.xlsx' नामक एक्सेल फाइलको निश्चित शीट नाम 'BS_2070' संग पढ्नुहोस्, प्रत्येक डोमेनका लागि WHOIS जानकारी हाल्ने गर्दछ, WHOIS डेटालाई फार्म्याट गर्दछ, र यसलाई मूल डेटाफ्रेममा 'Email_3' स्तम्भको ठाउँमा हाल्ने छ। अपडेट गरिएको डेटाफ्रेमलाई त्यस्तो एक्सेल फाइलमा र शीटमा पुन:लेखिएको छ।
 
 यस कोडमा whois लाइब्रेरी प्रयोग गरिएको छ जसले डोमेनका लागि WHOIS जानकारी प्राप्त गर्दछ, तपाईंले यो कोडलाई प्रायोगिक बनाउनका लागि python-whois लाइब्रेरी इन्स्टल गर्नुपर्छ (pip install python-whois). कृपया सुनिश्चित गर्नुहोस् कि एक्सेल फाइलमा 'BS_2070' नामक शीट र 'URL' स्तम्भ छ र सो शीटमा छ।
+<pre>
+import pandas as pd
+
+# Load all sheets into a dictionary of DataFrames
+xls = pd.ExcelFile('group-the-data-by-the-reg-year.xlsx')
+dfs = {sheet_name: xls.parse(sheet_name) for sheet_name in xls.sheet_names}
+
+# Concatenate all DataFrames into one
+df_all = pd.concat(dfs.values(), ignore_index=True)
+
+# Write the concatenated DataFrame to a new sheet in the same Excel file
+with pd.ExcelWriter('group-the-data-by-the-reg-year.xlsx', mode='a', if_sheet_exists='replace') as writer:
+    df_all.to_excel(writer, sheet_name='ALL', index=False)
+</pre>
+
