@@ -33,6 +33,16 @@ url: "https://www.enepal.net.np/" # the base hostname & protocol for your site, 
 twitter_username: hyphenab
 github_username:  w38g0ru
 
+social-network-links:
+  email: "someone@example.com"
+  rss: true  # remove this line if you don't want to show an RSS link at the bottom
+  facebook: deanattali
+  github: daattali
+  twitter: daattali
+  patreon: DeanAttali
+  youtube: "@daattali"
+  whatsapp: 15551212
+
 # Google Analytics
 google_analytics: UA—XXXXXXXX-X
 
