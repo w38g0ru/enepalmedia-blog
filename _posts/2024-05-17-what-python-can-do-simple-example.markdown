@@ -52,7 +52,7 @@ df = df.apply(shift_cells, axis=1)
 df.to_excel("shift-non-empty-cells-to-the-left.xlsx", index=False)
 </pre>
 
-अब हेर्दा एक्सल फाईलको रो ३० अनि नमिले जस्तो देखी , यसलाई डिलिट गर्दिम । 
+यदी कुनै रो मा वेब ठेगाना छैन भने त्यो रो पुरै डिलिट गर्ने 
 <pre>
     import pandas as pd
 
