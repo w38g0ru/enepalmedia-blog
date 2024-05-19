@@ -66,7 +66,7 @@ df = df.dropna(subset=[df.columns[4]])
 # Write the modified DataFrame to a new Excel file
 df.to_excel("drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx", index=False)
 </pre>
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx)  माथिको कोडले यदि कुनै रो (row) मा वेब ठेगाना छैन भने त्यो रो (row) पुरै डिलिट गर्दिन्छ । पिडिएफ बाट एक्सलमा कन्भर्ट गर्ने क्रममा खाली रो हरू आएका पनि हुन सक्छन । 
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx)  माथिको कोडले यदि कुनै रो (row) मा वेब ठेगाना छैन भने त्यो रो (row) पुरै डिलिट गर्दिन्छ । पिडिएफ बाट एक्सलमा कन्भर्ट गर्ने क्रममा खाली रो हरू आएका पनि हुन सक्छन । हामीले माथी जेनेरेट गरेको फाईलमा चौथो कोलममा युआरएल छन । 
 
 <pre>
 import pandas as pd
@@ -108,7 +108,7 @@ for shift in shifts:
 # Save the modified DataFrame to a new Excel file
 df.to_excel('shift-the-entire-row-left-or-right.xlsx', index=False)
 </pre>
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/shift-the-entire-row-left-or-right.xlsx)  मोबाईल नम्बरहरु ट्रेडिशनल नेपाली फन्ट (प्रिती कान्तीपुर) मा कमा दिएर लेखेको छ । यसलाई अंग्रेजीमा रुपान्तरण गरौ । 
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/shift-the-entire-row-left-or-right.xlsx) । 
 <pre>
 from openpyxl import load_workbook
 
