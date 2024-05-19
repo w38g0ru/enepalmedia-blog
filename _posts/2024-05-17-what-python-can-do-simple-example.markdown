@@ -66,7 +66,8 @@ df = df.dropna(subset=[df.columns[4]])
 # Write the modified DataFrame to a new Excel file
 df.to_excel("drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx", index=False)
 </pre>
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/Enlisted-Online-Media-List-Excel.xlsx)  माथिको कोडले यदि कुनै रो (row) मा वेब ठेगाना छैन भने त्यो रो (row) पुरै डिलिट गर्दिन्छ । पिडिएफ बाट एक्सलमा कन्भर्ट गर्ने क्रममा खाली रो हरू आएका पनि हुन सक्छन । [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/drop-rows-where-the-third-column(zero-based%20indexing)-is-empty.xlsx) 
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/Enlisted-Online-Media-List-Excel.xlsx)  माथिको कोडले यदि कुनै रो (row) मा वेब ठेगाना छैन भने त्यो रो (row) पुरै डिलिट गर्दिन्छ । पिडिएफ बाट एक्सलमा कन्भर्ट गर्ने क्रममा खाली रो हरू आएका पनि हुन सक्छन । 
+
 <pre>
 import pandas as pd
 
