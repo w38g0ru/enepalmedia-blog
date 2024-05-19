@@ -8,7 +8,6 @@ date:   2024-05-17 20:38:12 +0545
 यसको लागि सबैभन्दा पहिले हामीले प्रेसकाउन्सिल ले उपलब्ध गराएको डाटा (जुन पिडिएफ फाईल) मा हुन्छ त्यसलाई माईक्रोसफ्ट एक्सल फर्माट (xlsx) मा एक्सपोर्ट गर्दछौ । यो ट्युटोरियल तयार गर्दा सम्मको [बिबरण](https://www.presscouncilnepal.gov.np/np/wp-content/uploads/2024/04/Enlisted-Online-Media-till-2081-01-04.pdf) मा भेट्न सकिन्छ तर यो लिङ्क ब्रेक हुन सक्ने सम्भावना पनि उत्तिकै रहेकोले यसलाई हामी [क्लाउड फ्लेयरमा अपलोड गरेर राखेका छौ](https://districts.enepal.net.np/Enlisted-Online-Media-till-2081-01-04.pdf) । 
 
 <pre>
-<code>
 # Install necessary libraries
 # !pip install tabula-py pandas
 
@@ -30,7 +29,6 @@ combined_df = pd.concat(tables, ignore_index=True)
 
 # Write the combined DataFrame to a single sheet in the Excel file
 combined_df.to_excel("Enlisted-Online-Media-List-Excel.xlsx", index=False)
-</code>
 </pre>
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/Enlisted-Online-Media-List-Excel.xlsx)  यसले पिडिएफ फाइललाई एक्सलमा कन्भर्ट गर्दछ । यद्यपि एक्सल फाइलको डाटाहरू भद्रगोल छन् । कतै पहिलो दुई वटा कोलम खाली छन् कुनै कुनैमा पहिलो कोलम बाट डेटा सुरु हुन्छ कुनैमा दोस्रो कोलम बाट । अब हाम्रो काम भनेको डाटालाई ठ्याक्क मिलाएर राख्नु पनि हो । डाटा एक्सलमा भएको हुनाले तपाई आफ्नो इच्छा अनुसार यसलाई म्यान वली पनि गर्न सक्नु हुन्छ । तर हामी पाईथन सिक्दै गरेको हुनाले यो काम पाईथन कोड लेखेर गर्छौ ।
@@ -53,6 +51,7 @@ df = df.apply(shift_cells, axis=1)
 # Write the modified DataFrame to a new Excel file
 df.to_excel("shift-non-empty-cells-to-the-left.xlsx", index=False)
 </pre>
+
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/shift-non-empty-cells-to-the-left.xlsx) यसल प्रत्येक row भएका non-empty cells लाई बायाँतिर सर्छ र empty cells लाई दायाँतिर पठाउँछ।
 
 <pre>
@@ -67,6 +66,7 @@ df = df.dropna(subset=[df.columns[4]])
 # Write the modified DataFrame to a new Excel file
 df.to_excel("drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx", index=False)
 </pre>
+
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx)  माथिको कोडले यदि कुनै रो (row) मा वेब ठेगाना छैन भने त्यो रो (row) पुरै डिलिट गर्दिन्छ । पिडिएफ बाट एक्सलमा कन्भर्ट गर्ने क्रममा खाली रो हरू आएका पनि हुन सक्छन । हामीले माथी जेनेरेट गरेको फाईलमा चौथो कोलममा युआरएल छन । 
 
 <pre>
@@ -109,7 +109,9 @@ for shift in shifts:
 # Save the modified DataFrame to a new Excel file
 df.to_excel('shift-the-entire-row-left-or-right.xlsx', index=False)
 </pre>
+
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/shift-the-entire-row-left-or-right.xlsx) माथीको कोडले एउटै कोलममा नपरेका डाटाहरुलाई एउटै कोलममा सार्ने काम गर्दछ । 
+
 <pre>
 from openpyxl import load_workbook
 
@@ -139,7 +141,9 @@ for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=8, max_col=8):  #
 wb.save('List-with-Kantipur-numbers-to-English-numbers.xlsx')
 
 </pre>
+
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/List-with-Kantipur-numbers-to-English-numbers.xlsx)  यो कोडले हामीले काम गर्दै गरेको एक्सल फाईलको आठौ रो मा भएको मोबाईल नम्बरलाई अंग्रेजीमा रुपान्तरण गर्ने काम गर्दछ । 
+
 <pre>
 import pandas as pd
 
@@ -153,7 +157,9 @@ df = df[columns_to_keep]
 # Save the updated DataFrame to a new Excel file
 df.to_excel("drop-all-columns-after-I.xlsx", index=False)
 </pre>
+
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/drop-all-columns-after-I.xlsx)  माथीको कोडले डाटा भएको अन्तिम कोलम (I) पछीका सबै कोलमहरु डिलिट गर्ने काम गर्दछ । 
+
 <pre>
 import pandas as pd
 
@@ -177,7 +183,9 @@ df[email_columns] = email_addresses_split
 # Save the updated DataFrame to a new Excel file
 df.to_excel("split-the-values-in-column-H-and-I-into-separate-columns.xlsx", index=False)
 </pre>
+
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/split-the-values-in-column-H-and-I-into-separate-columns.xlsx)  यो कोडले ईमेल र मोबाईल कोलमममा भएका टेक्स्टहरुलाई त्यसको भएको कमा को आधारमा छुट्टयार अन्तिमको कोलममा राख्ने काम गर्दछ । 
+
 <pre>
 import pandas as pd
 
@@ -201,9 +209,11 @@ df[email_columns] = email_addresses_split
 # Save the updated DataFrame to a new Excel file
 df.to_excel("split-the-values-in-column-H-and-I-into-separate-columns.xlsx", index=False)
 </pre>
+
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/split-the-values-in-column-H-and-I-into-separate-columns.xlsx)  यो कोडले "drop-all-columns-after-I.xlsx" नामक Excel फाइललाई पढेर प्रथम पङ्क्तिमा रहेको 'फोन नम्बर' (स्तम्भ 'H') र 'इमेल ठेगाना' (स्तम्भ 'I') को मानहरूलाई अलग अलग स्तम्भमा खण्डित गर्दछ। अन्त्यमा, संशोधित DataFrame लाई "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक नयाँ Excel फाइलमा सेभ गर्दछ।
 
 यो कोडले "drop-all-columns-after-I.xlsx" नामक Excel फाइललाई पढेर पहिले पङ्क्तिमा रहेको 'Phone' (स्तम्भ 'H') र 'Email' (स्तम्भ 'I') को मानहरूलाई अलग अलग स्तम्भमा खण्डित गर्दछ। अन्त्यमा, संशोधित DataFrame लाई "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक नयाँ Excel फाइलमा सेभ गर्दछ।
+
 <pre>
     import pandas as pd
 
@@ -222,9 +232,11 @@ df.rename(columns={"Unnamed: 0": "SN", "kmfOn g=": "REG_NO","Unnamed: 1":"RED_DA
 df.to_excel("rename-the-headers-all-data.xlsx", index=False)
 
 </pre>
+
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/rename-the-headers-all-data.xlsx)  यो कोडले "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक Excel फाइललाई पढेर स्तम्भहरूको नाम नयाँ नाममा रेनेम गर्दछ। नयाँ नामहरूको सूचीलाई प्रिन्ट गरिएको छ र अन्त्यमा संशोधित DataFrame लाई "rename-the-headers-all-data.xlsx" नामक नयाँ Excel फाइलमा सेभ गरिएको छ।
 
 यो कोडले "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक Excel फाइललाई पढेर प्रथम पङ्क्तिमा रहेको स्तम्भहरूको नाम नयाँ नाममा रेनेम गर्दछ। नयाँ नामहरूको सूचीलाई प्रिन्ट गरिएको छ र अन्त्यमा संशोधित DataFrame लाई "rename-the-headers-all-data.xlsx" नामक नयाँ Excel फाइलमा सेभ गरिएको छ।
+
 <pre>
     import pandas as pd
 
@@ -238,7 +250,9 @@ json_data = df.to_json(orient='records', lines=True)
 with open('rename-the-headers-all-data.json', 'w') as f:
     f.write(json_data)
 </pre>
+
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/rename-the-headers-all-data.json)  यो कोडले "rename-the-headers-all-data.xlsx" नामक Excel फाइललाई पढेर त्यसलाई JSON डाटामा रुपान्तरित गर्दछ। त्यसपछि, त्यस JSON डाटालाई "rename-the-headers-all-data.json" नामक फाइलमा राख्दछ।
+
 <pre>
     import pandas as pd
 
