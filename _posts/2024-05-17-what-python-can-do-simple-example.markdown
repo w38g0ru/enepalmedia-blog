@@ -108,7 +108,7 @@ for shift in shifts:
 # Save the modified DataFrame to a new Excel file
 df.to_excel('shift-the-entire-row-left-or-right.xlsx', index=False)
 </pre>
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/shift-the-entire-row-left-or-right.xlsx) । 
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/shift-the-entire-row-left-or-right.xlsx) माथीको कोडले एउटै कोलममा नपरेका डाटाहरुलाई एउटै कोलममा सार्ने काम गर्दछ । 
 <pre>
 from openpyxl import load_workbook
 
@@ -138,7 +138,7 @@ for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=8, max_col=8):  #
 wb.save('List-with-Kantipur-numbers-to-English-numbers.xlsx')
 
 </pre>
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/List-with-Kantipur-numbers-to-English-numbers.xlsx)  यो कोडले openpyxl लाइब्रेरी प्रयोग गरेर पहिले बनाइएको Excel फाइललाई लोड गर्दछ र त्यसको 'MOBILE' स्तम्भमा रहेका सबै सेलहरूमा गएर कान्तिपुर अक्षरहरूलाई अंग्रेजी अंकमा रूपान्तरण गर्दछ। अन्त्यमा, यो संशोधित Excel फाइललाई 'List-with-Kantipur-numbers-to-English-numbers.xlsx' नामक नयाँ फाइलमा सेभ गर्दछ।
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/List-with-Kantipur-numbers-to-English-numbers.xlsx)  यो कोडले हामीले काम गर्दै गरेको एक्सल फाईलको आठौ रो मा भएको मोबाईल नम्बरलाई अंग्रेजीमा रुपान्तरण गर्ने काम गर्दछ । 
 <pre>
 import pandas as pd
 
@@ -152,7 +152,7 @@ df = df[columns_to_keep]
 # Save the updated DataFrame to a new Excel file
 df.to_excel("drop-all-columns-after-I.xlsx", index=False)
 </pre>
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/drop-all-columns-after-I.xlsx)  यो कोडले "List-with-Kantipur-numbers-to-English-numbers.xlsx" नामक Excel फाइललाई pandas को प्रयोग गरेर पढ्नुहोस्। त्यसपछि, स्तम्भ 'I' सम्मको सबै स्तम्भहरूलाई राख्नुहोस् र 'I' भन्दा पछि का सबै स्तम्भहरूलाई हटाउनुहोस्। अन्त्यमा, संशोधित DataFrame लाई "drop-all-columns-after-I.xlsx" नामक नयाँ Excel फाइलमा सेभ गर्दछ।
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/drop-all-columns-after-I.xlsx)  माथीको कोडले डाटा भएको अन्तिम कोलम (I) पछीका सबै कोलमहरु डिलिट गर्ने काम गर्दछ । 
 <pre>
 import pandas as pd
 
@@ -176,7 +176,7 @@ df[email_columns] = email_addresses_split
 # Save the updated DataFrame to a new Excel file
 df.to_excel("split-the-values-in-column-H-and-I-into-separate-columns.xlsx", index=False)
 </pre>
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/split-the-values-in-column-H-and-I-into-separate-columns.xlsx)  यो कोडले "drop-all-columns-after-I.xlsx" नामक Excel फाइललाई पढेर प्रथम पङ्क्तिमा रहेको 'फोन नम्बर' (स्तम्भ 'H') र 'इमेल ठेगाना' (स्तम्भ 'I') को मानहरूलाई अलग अलग स्तम्भमा खण्डित गर्दछ। अन्त्यमा, संशोधित DataFrame लाई "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक नयाँ Excel फाइलमा सेभ गर्दछ।
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/split-the-values-in-column-H-and-I-into-separate-columns.xlsx)  यो कोडले ईमेल र मोबाईल कोलमममा भएका टेक्स्टहरुलाई त्यसको भएको कमा को आधारमा छुट्टयार अन्तिमको कोलममा राख्ने काम गर्दछ । 
 <pre>
 import pandas as pd
 
