@@ -32,8 +32,7 @@ combined_df = pd.concat(tables, ignore_index=True)
 combined_df.to_excel("Enlisted-Online-Media-List-Excel.xlsx", index=False)
 </pre>
 
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/Enlisted-Online-Media-List-Excel.xlsx) 
-<pre> माथिको कोडले पिडिएफ फाइललाई एक्सलमा कन्भर्ट गर्दछ । ([डाउनलोड गर्न यहाँ क्लिक गर्नुहोस्](https://districts.enepal.net.np/Enlisted-Online-Media-List-Excel.xlsx)) यद्यपि एक्सल फाइलको डाटाहरू भद्रगोल छन् । कतै पहिलो दुई वटा कोलम खाली छन् कुनै कुनैमा पहिलो कोलम बाट डेटा सुरु हुन्छ कुनैमा दोस्रो कोलम बाट । अब हाम्रो काम भनेको डाटालाई ठ्याक्क मिलाएर राख्नु पनि हो । डाटा एक्सलमा भएको हुनाले तपाई आफ्नो इच्छा अनुसार यसलाई म्यान वली पनि गर्न सक्नु हुन्छ । तर हामी पाईथन सिक्दै गरेको हुनाले यो काम पाईथन कोड लेखेर गर्छौ ।
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/Enlisted-Online-Media-List-Excel.xlsx)  यसले पिडिएफ फाइललाई एक्सलमा कन्भर्ट गर्दछ । यद्यपि एक्सल फाइलको डाटाहरू भद्रगोल छन् । कतै पहिलो दुई वटा कोलम खाली छन् कुनै कुनैमा पहिलो कोलम बाट डेटा सुरु हुन्छ कुनैमा दोस्रो कोलम बाट । अब हाम्रो काम भनेको डाटालाई ठ्याक्क मिलाएर राख्नु पनि हो । डाटा एक्सलमा भएको हुनाले तपाई आफ्नो इच्छा अनुसार यसलाई म्यान वली पनि गर्न सक्नु हुन्छ । तर हामी पाईथन सिक्दै गरेको हुनाले यो काम पाईथन कोड लेखेर गर्छौ ।
 
 <pre>
 import pandas as pd
@@ -53,14 +52,8 @@ df = df.apply(shift_cells, axis=1)
 # Write the modified DataFrame to a new Excel file
 df.to_excel("shift-non-empty-cells-to-the-left.xlsx", index=False)
 </pre>
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/Enlisted-Online-Media-List-Excel.xlsx) 
-यो कोडले पहिले Excel फाइललाई pandas को प्रयोग गरेर पढ्छ। त्यसपछि, प्रत्येक पङ्क्तिमा (row) भएका गैर-खाली कोषहरू (non-empty cells) लाई बायाँतिर सर्छ र खाली कोषहरूलाई दायाँतिर पठाउँछ। अन्त्यमा, संशोधित DataFrame लाई नयाँ Excel फाइलमा लेख्छ। यहाँ कसरी काम गर्छ भनेर विस्तृत वर्णन छ:
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/Enlisted-Online-Media-List-Excel.xlsx) यसल प्रत्येक row भएका non-empty cells लाई बायाँतिर सर्छ र empty cells लाई दायाँतिर पठाउँछ।
 
-Excel फाइल पढ्नुहोस्: pd.read_excel("Enlisted-Online-Media-List-Excel.xlsx") ले दिइएको फाइललाई DataFrame मा पढ्छ।
-शिफ्ट गर्ने कार्य: shift_cells नामक एक फङ्क्शनले प्रत्येक पङ्क्तिमा भएका गैर-खाली कोषहरूलाई (non-null cells) बायाँतिर सर्छ। यसले पहिलो पङ्क्तिमा सबै गैर-खाली कोषहरूलाई राख्छ र बाँकीलाई None ले भरिन्छ।
-DataFrame मा शिफ्ट गर्नुहोस्: df.apply(shift_cells, axis=1) ले प्रत्येक पङ्क्तिमा शिफ्ट गर्ने फङ्क्शनलाई लागू गर्छ।
-नयाँ Excel फाइलमा लेख्नुहोस्: संशोधित DataFrame लाई df.to_excel("shift-non-empty-cells-to-the-left.xlsx", index=False) ले नयाँ Excel फाइलमा लेख्छ।
-यसरी, यस कोडले Excel पङ्क्तिहरूमा रहेका सबै गैर-खाली कोषहरूलाई बायाँतिर सर्छ र सबै खाली कोषहरूलाई पङ्क्तिको अन्त्यमा पठाउँछ।
 <pre>
 import pandas as pd
 
