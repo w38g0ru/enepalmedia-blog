@@ -190,34 +190,6 @@ df.to_excel("split-the-values-in-column-H-and-I-into-separate-columns.xlsx", ind
 import pandas as pd
 
 # Read the Excel file
-df = pd.read_excel("drop-all-columns-after-I.xlsx")
-
-# Split the values in column H (phone numbers) into separate columns
-phone_numbers_split = df['cgnfOgsf gfd'].str.split(',', expand=True)
-phone_columns = [f'Phone_{i+1}' for i in range(phone_numbers_split.shape[1])]
-df[phone_columns] = phone_numbers_split
-
-# Split the values in column I (email addresses) into separate columns
-email_addresses_split = df['Unnamed: 4'].str.split(',', expand=True)
-email_columns = [f'Email_{i+1}' for i in range(email_addresses_split.shape[1])]
-df[email_columns] = email_addresses_split
-
-# Optional: Drop the original H and I columns if no longer needed
-# df.drop(columns=['H', 'I'], inplace=True)
-
-
-# Save the updated DataFrame to a new Excel file
-df.to_excel("split-the-values-in-column-H-and-I-into-separate-columns.xlsx", index=False)
-</pre>
-
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/split-the-values-in-column-H-and-I-into-separate-columns.xlsx)  यो कोडले "drop-all-columns-after-I.xlsx" नामक Excel फाइललाई पढेर प्रथम पङ्क्तिमा रहेको 'फोन नम्बर' (स्तम्भ 'H') र 'इमेल ठेगाना' (स्तम्भ 'I') को मानहरूलाई अलग अलग स्तम्भमा खण्डित गर्दछ। अन्त्यमा, संशोधित DataFrame लाई "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक नयाँ Excel फाइलमा सेभ गर्दछ।
-
-यो कोडले "drop-all-columns-after-I.xlsx" नामक Excel फाइललाई पढेर पहिले पङ्क्तिमा रहेको 'Phone' (स्तम्भ 'H') र 'Email' (स्तम्भ 'I') को मानहरूलाई अलग अलग स्तम्भमा खण्डित गर्दछ। अन्त्यमा, संशोधित DataFrame लाई "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक नयाँ Excel फाइलमा सेभ गर्दछ।
-
-<pre>
-    import pandas as pd
-
-# Read the Excel file
 df = pd.read_excel("split-the-values-in-column-H-and-I-into-separate-columns.xlsx")
 
 # Print original headers
@@ -233,12 +205,10 @@ df.to_excel("rename-the-headers-all-data.xlsx", index=False)
 
 </pre>
 
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/rename-the-headers-all-data.xlsx)  यो कोडले "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक Excel फाइललाई पढेर स्तम्भहरूको नाम नयाँ नाममा रेनेम गर्दछ। नयाँ नामहरूको सूचीलाई प्रिन्ट गरिएको छ र अन्त्यमा संशोधित DataFrame लाई "rename-the-headers-all-data.xlsx" नामक नयाँ Excel फाइलमा सेभ गरिएको छ।
-
-यो कोडले "split-the-values-in-column-H-and-I-into-separate-columns.xlsx" नामक Excel फाइललाई पढेर प्रथम पङ्क्तिमा रहेको स्तम्भहरूको नाम नयाँ नाममा रेनेम गर्दछ। नयाँ नामहरूको सूचीलाई प्रिन्ट गरिएको छ र अन्त्यमा संशोधित DataFrame लाई "rename-the-headers-all-data.xlsx" नामक नयाँ Excel फाइलमा सेभ गरिएको छ।
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/rename-the-headers-all-data.xlsx) माथीको कोडले अहिले सम्म हामीले काम गर्दै गरेको एक्सल फाईलको हेडीङ्ग परिवर्तन गर्दछ । 
 
 <pre>
-    import pandas as pd
+import pandas as pd
 
 # Read the Excel file
 df = pd.read_excel('rename-the-headers-all-data.xlsx')
@@ -251,10 +221,10 @@ with open('rename-the-headers-all-data.json', 'w') as f:
     f.write(json_data)
 </pre>
 
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/rename-the-headers-all-data.json)  यो कोडले "rename-the-headers-all-data.xlsx" नामक Excel फाइललाई पढेर त्यसलाई JSON डाटामा रुपान्तरित गर्दछ। त्यसपछि, त्यस JSON डाटालाई "rename-the-headers-all-data.json" नामक फाइलमा राख्दछ।
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/rename-the-headers-all-data.json)  एक्सल फाईल फाईललाई जेसनमा परिवर्तन गर्दछ । 
 
 <pre>
-    import pandas as pd
+import pandas as pd
 
 # Load the Excel file
 file_path = 'rename-the-headers-all-data.xlsx'
@@ -271,9 +241,11 @@ with pd.ExcelWriter('group-the-data-by-the-reg-year.xlsx') as writer:
 
 print("Data divided into separate sheets based on the 4-digit numbers in column D.")
 </pre>
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/group-the-data-by-the-reg-year.xlsx)  यो कोडले "rename-the-headers-all-data.xlsx" नामक Excel फाइललाई पढ्ने छ र डाटालाई 'RED_DATE_NP' स्तम्भको पहिले ४ अंकलाई आधारमा समूह गर्दछ। त्यसपछि, प्रत्येक समूहलाई अलग-अलग शीटमा लेखिन्छ र "group-the-data-by-the-reg-year.xlsx" नामक नयाँ Excel फाइलमा राखिन्छ। शीटहरूलाई 'RED_DATE_NP' स्तम्भको ४ अंकीय संख्याहरूको आधारमा नामकरण गरिएको छ। कोडले "Data divided into separate sheets based on the 4-digit numbers in column D." भन्ने सन्देश प्रिन्ट गर्दछ।
+
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/group-the-data-by-the-reg-year.xlsx)  माथी कोडले एउटै सिटमा भएका सबै डाटाहरुलाई रजिष्ट्रेशन डेट (नेपाली) को आधारमा छुट्टा छुट्टै सिटमा डाटाहरु राख्ने काम गर्दछ । 
+
 <pre>
-    import pandas as pd
+import pandas as pd
 import whois
 from datetime import datetime
 
@@ -348,9 +320,9 @@ with pd.ExcelWriter('group-the-data-by-the-reg-year.xlsx', mode='a', if_sheet_ex
     df_updated.to_excel(writer, sheet_name='BS_2070', index=False)
 
 </pre>
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/group-the-data-by-the-reg-year.xlsx)  यो कोडले 'group-the-data-by-the-reg-year.xlsx' नामक एक्सेल फाइलको निश्चित शीट नाम 'BS_2070' संग पढ्नुहोस्, प्रत्येक डोमेनका लागि WHOIS जानकारी हाल्ने गर्दछ, WHOIS डेटालाई फार्म्याट गर्दछ, र यसलाई मूल डेटाफ्रेममा 'Email_3' स्तम्भको ठाउँमा हाल्ने छ। अपडेट गरिएको डेटाफ्रेमलाई त्यस्तो एक्सेल फाइलमा र शीटमा पुन:लेखिएको छ।
 
-यस कोडमा whois लाइब्रेरी प्रयोग गरिएको छ जसले डोमेनका लागि WHOIS जानकारी प्राप्त गर्दछ, तपाईंले यो कोडलाई प्रायोगिक बनाउनका लागि python-whois लाइब्रेरी इन्स्टल गर्नुपर्छ (pip install python-whois). कृपया सुनिश्चित गर्नुहोस् कि एक्सेल फाइलमा 'BS_2070' नामक शीट र 'URL' स्तम्भ छ र सो शीटमा छ।
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/group-the-data-by-the-reg-year.xlsx) माथीको कोडले छुट्टा छु्ट्टै सिटमा भएको वेबसाईट ठेगाना () को आधारमा त्यसको डेटा तान्ने काम गर्दछ । यसको लागि पाईथन मोड्युलको प्रयोग गरीएको छ । यसो गर्दा सबै भन्दा माथीको सिटको नाम र तलको सिटको नाम एकै पटक परिवर्तन गर्नु पर्दछ । यसरि छुट्टा छुट्टै सिटमा राख्नुको कारण पनि हुई डाटा तान्ने काम क्रमश होस । एकै पटक सर्भरलाई लोड नपरोस भन्नाले हो । 
+
 <pre>
 import pandas as pd
 
