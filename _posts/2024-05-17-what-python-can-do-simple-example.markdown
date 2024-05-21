@@ -113,6 +113,9 @@ df.to_excel('shift-the-entire-row-left-or-right.xlsx', index=False)
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/shift-the-entire-row-left-or-right.xlsx) माथीको कोडले एउटै कोलममा नपरेका डाटाहरुलाई एउटै कोलममा सार्ने काम गर्दछ । 
 
 <pre>
+# Install necessary libraries
+# pip install openpyxl
+    
 from openpyxl import load_workbook
 
 # Load the Excel file
@@ -242,9 +245,12 @@ with pd.ExcelWriter('group-the-data-by-the-reg-year.xlsx') as writer:
 print("Data divided into separate sheets based on the 4-digit numbers in column D.")
 </pre>
 
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/group-the-data-by-the-reg-year.xlsx)  माथी कोडले एउटै सिटमा भएका सबै डाटाहरुलाई रजिष्ट्रेशन डेट (नेपाली) को आधारमा छुट्टा छुट्टै सिटमा डाटाहरु राख्ने काम गर्दछ । 
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/group-the-data-by-the-reg-year.xlsx)  माथी कोडले एउटै सिटमा भएका सबै डाटाहरुलाई रजिष्ट्रेशन डेट (नेपाली) को आधारमा छुट्टा छुट्टै सिटमा डाटाहरु राख्ने काम गर्दछ । उदारणको लागी बि स २०७० मा दर्ता भएका वेबसाईटहरुलाई BS_2070 नाम गरेको सिटमा सेभ गरेर राख्छ । 
 
 <pre>
+# Install necessary libraries
+# pip install python-whois
+    
 import pandas as pd
 import whois
 from datetime import datetime
@@ -321,7 +327,7 @@ with pd.ExcelWriter('group-the-data-by-the-reg-year.xlsx', mode='a', if_sheet_ex
 
 </pre>
 
-[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/group-the-data-by-the-reg-year.xlsx) माथीको कोडले छुट्टा छु्ट्टै सिटमा भएको वेबसाईट ठेगाना () को आधारमा त्यसको डेटा तान्ने काम गर्दछ । यसको लागि पाईथन मोड्युलको प्रयोग गरीएको छ । यसो गर्दा सबै भन्दा माथीको सिटको नाम र तलको सिटको नाम एकै पटक परिवर्तन गर्नु पर्दछ । यसरि छुट्टा छुट्टै सिटमा राख्नुको कारण पनि हुई डाटा तान्ने काम क्रमश होस । एकै पटक सर्भरलाई लोड नपरोस भन्नाले हो । 
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/group-the-data-by-the-reg-year.xlsx) माथीको कोडले छुट्टा छु्ट्टै सिटमा भएको वेबसाईट ठेगाना (URL) को आधारमा त्यसको डेटा तान्ने काम गर्दछ । यसको लागि [पाईथन-हुईज](https://pypi.org/project/python-whois/) मोड्युलको प्रयोग गरीएको छ । यसो गर्दा सबै भन्दा माथीको सिटको नाम र तलको सिटको नाम एकै पटक परिवर्तन गर्नु पर्दछ । यसरि छुट्टा छुट्टै सिटमा राख्नुको कारण पनि हुईज (whois) डाटा तान्ने काम क्रमश होस । एकै पटक सर्भरलाई लोड नपरोस भन्नाले हो । 
 
 <pre>
 import pandas as pd
@@ -334,7 +340,8 @@ dfs = {sheet_name: xls.parse(sheet_name) for sheet_name in xls.sheet_names}
 df_all = pd.concat(dfs.values(), ignore_index=True)
 
 # Write the concatenated DataFrame to a new sheet in the same Excel file
-with pd.ExcelWriter('group-the-data-by-the-reg-year.xlsx', mode='a', if_sheet_exists='replace') as writer:
+with pd.ExcelWriter('enlisted-sites-with-whois-info.xlsx', mode='a', if_sheet_exists='replace') as writer:
     df_all.to_excel(writer, sheet_name='ALL', index=False)
 </pre>
 
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/enlisted-sites-with-whois-info.xlsx) यसमा ALL नाम गरेको सिटमा सबै साईटहरुको प्रेसकाउन्सिलले सार्वजनिक गरेको बिबरण र डोमेनको हुईज ईन्फर्मेशन छ । अब तपाई सँग डाटा छ - यसलाई कसरी प्रयोग गर्नु हुन्छ तपाईको हातमा । 
