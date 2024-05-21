@@ -345,3 +345,65 @@ with pd.ExcelWriter('enlisted-sites-with-whois-info.xlsx', mode='a', if_sheet_ex
 </pre>
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/enlisted-sites-with-whois-info.xlsx) यसमा ALL नाम गरेको सिटमा सबै साईटहरुको प्रेसकाउन्सिलले सार्वजनिक गरेको बिबरण र डोमेनको हुईज ईन्फर्मेशन छ । अब तपाई सँग डाटा छ - यसलाई कसरी प्रयोग गर्नु हुन्छ तपाईको हातमा । 
+
+<pre>
+import pandas as pd
+from io import BytesIO
+import requests
+
+# URL of the Excel file
+url = 'https://districts.enepal.net.np/enlisted-sites-with-whois-info.xlsx'
+
+# Download the Excel file
+response = requests.get(url)
+excel_data = response.content
+
+# Columns to extract from the Excel file
+columns_to_extract = [
+    'SN', 'REG_NO', 'RED_DATE_NP', 'URL', 'PUBLISHER', 'Name', 'PUBLICATION', 'Org', 
+    'ADDRESS', 'Address', 'City', 'State', 'Country', 'Phone_1', 
+    'Phone_2', 'Email_1', 'Email_2', 'Registrar', 'Whois_Server', 'Updated_Date', 
+    'Creation_Date', 'Expiration_Date', 'Name_Servers', 'Emails', 'Dnssec'
+]
+
+# Load the Excel file into a DataFrame and select the 'ALL' sheet
+df = pd.read_excel(BytesIO(excel_data), sheet_name='ALL', usecols=columns_to_extract)
+
+# Ensure 'Creation_Date', 'Expiration_Date', and 'Updated_Date' have only one date, removing duplicates if there are any
+def select_first_unique_date(dates):
+    if isinstance(dates, str):
+        # Handle case where dates are stored as a single string
+        dates = dates.strip('[]').replace("'", "").split(', ')
+    return dates[0] if isinstance(dates, list) else dates
+
+df['Creation_Date'] = df['Creation_Date'].apply(select_first_unique_date)
+df['Expiration_Date'] = df['Expiration_Date'].apply(select_first_unique_date)
+df['Updated_Date'] = df['Updated_Date'].apply(select_first_unique_date)
+
+# Convert specific columns to title case
+columns_to_title_case = ['Name', 'Org', 'Address', 'City', 'State']
+df[columns_to_title_case] = df[columns_to_title_case].apply(lambda col: col.str.title())
+
+# Convert 'Expiration_Date' to datetime to extract month
+df['Expiration_Date'] = pd.to_datetime(df['Expiration_Date'], errors='coerce', dayfirst=True)
+
+# Drop rows where 'Expiration_Date' could not be converted
+df.dropna(subset=['Expiration_Date'], inplace=True)
+
+# Reorder columns to match the specified order
+df = df[columns_to_extract]
+
+# Create a dictionary of DataFrames grouped by month
+dfs_by_month = {month: data for month, data in df.groupby(df['Expiration_Date'].dt.month)}
+
+# Write each DataFrame to a separate sheet in an Excel file
+with pd.ExcelWriter('enlisted-sites-with-domain-expiry-month.xlsx') as writer:
+    for month, data in dfs_by_month.items():
+        sheet_name = pd.to_datetime(month, format='%m').strftime('%B')
+        data.to_excel(writer, sheet_name=sheet_name, index=False)
+
+# Display the updated DataFrame
+print(df)
+</pre>
+
+[माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/enlisted-sites-with-domain-expiry-month.xlsx) यसमा ALL नाम गरेको सिटमा सबै साईटहरुलाई डोमेन एक्सपाईरी मन्थाको आधारमा छुट्टा छुट्टै लिष्टमा राखीएको छ । 
