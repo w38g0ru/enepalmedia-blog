@@ -7,7 +7,7 @@ date:   2024-05-17 20:38:12 +0545
 
 यसको लागि सबैभन्दा पहिले हामीले प्रेसकाउन्सिल ले उपलब्ध गराएको डाटा (जुन पिडिएफ फाईल) मा हुन्छ त्यसलाई माईक्रोसफ्ट एक्सल फर्माट (xlsx) मा एक्सपोर्ट गर्दछौ । यो ट्युटोरियल तयार गर्दा सम्मको [बिबरण](https://www.presscouncilnepal.gov.np/np/wp-content/uploads/2024/04/Enlisted-Online-Media-till-2081-01-04.pdf) मा भेट्न सकिन्छ तर यो लिङ्क ब्रेक हुन सक्ने सम्भावना पनि उत्तिकै रहेकोले यसलाई हामी [क्लाउड फ्लेयरमा अपलोड गरेर राखेका छौ](https://districts.enepal.net.np/Enlisted-Online-Media-till-2081-01-04.pdf) । 
 
-<pre>
+```python
 # Install necessary libraries
 # !pip install tabula-py pandas
 
@@ -29,11 +29,11 @@ combined_df = pd.concat(tables, ignore_index=True)
 
 # Write the combined DataFrame to a single sheet in the Excel file
 combined_df.to_excel("Enlisted-Online-Media-List-Excel.xlsx", index=False)
-</pre>
+```
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/Enlisted-Online-Media-List-Excel.xlsx)  यसले पिडिएफ फाइललाई एक्सलमा कन्भर्ट गर्दछ । यद्यपि एक्सल फाइलको डाटाहरू भद्रगोल छन् । कतै पहिलो दुई वटा कोलम खाली छन् कुनै कुनैमा पहिलो कोलम बाट डेटा सुरु हुन्छ कुनैमा दोस्रो कोलम बाट । अब हाम्रो काम भनेको डाटालाई ठ्याक्क मिलाएर राख्नु पनि हो । डाटा एक्सलमा भएको हुनाले तपाई आफ्नो इच्छा अनुसार यसलाई म्यान वली पनि गर्न सक्नु हुन्छ । तर हामी पाईथन सिक्दै गरेको हुनाले यो काम पाईथन कोड लेखेर गर्छौ ।
 
-<pre>
+```python
 import pandas as pd
 
 # Read the Excel file
@@ -50,11 +50,11 @@ df = df.apply(shift_cells, axis=1)
 
 # Write the modified DataFrame to a new Excel file
 df.to_excel("shift-non-empty-cells-to-the-left.xlsx", index=False)
-</pre>
+```
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/shift-non-empty-cells-to-the-left.xlsx) यसल प्रत्येक row भएका non-empty cells लाई बायाँतिर सर्छ र empty cells लाई दायाँतिर पठाउँछ।
 
-<pre>
+```python
 import pandas as pd
 
 # Read the Excel file
@@ -65,11 +65,11 @@ df = df.dropna(subset=[df.columns[4]])
 
 # Write the modified DataFrame to a new Excel file
 df.to_excel("drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx", index=False)
-</pre>
+```
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx)  माथिको कोडले यदि कुनै रो (row) मा वेब ठेगाना छैन भने त्यो रो (row) पुरै डिलिट गर्दिन्छ । पिडिएफ बाट एक्सलमा कन्भर्ट गर्ने क्रममा खाली रो हरू आएका पनि हुन सक्छन । हामीले माथी जेनेरेट गरेको फाईलमा चौथो कोलममा युआरएल छन । 
 
-<pre>
+```python
 import pandas as pd
 
 file_path = 'drop-rows-where-the-third-column(zero-based indexing)-is-empty.xlsx'
@@ -108,7 +108,7 @@ for shift in shifts:
 
 # Save the modified DataFrame to a new Excel file
 df.to_excel('shift-the-entire-row-left-or-right.xlsx', index=False)
-</pre>
+```
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/shift-the-entire-row-left-or-right.xlsx) माथीको कोडले एउटै कोलममा नपरेका डाटाहरुलाई एउटै कोलममा सार्ने काम गर्दछ । 
 
