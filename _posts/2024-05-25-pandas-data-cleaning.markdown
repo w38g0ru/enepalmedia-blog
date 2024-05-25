@@ -12,7 +12,7 @@ date:   2024-05-24 15:38:12 +0545
 ```python
 import numpy as np
 import pandas as pd
-'''
+```
 
 
 # DataFrame ट्रन्केशनलाई रोक्न Pandas प्रदर्शन विकल्पहरू समायोजन गरौं
