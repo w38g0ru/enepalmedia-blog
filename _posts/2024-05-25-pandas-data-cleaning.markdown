@@ -106,7 +106,7 @@ df['new_feature'] = df2['df2_feature']  # अर्को DataFrame स्तम
 df.drop('column1', axis='columns')
 ```
 
-# दुई DataFrame हरूलाई संयोजन गर्नुहोस्
+# दुई DataFrame हरूलाई एमेन्ड (जोड्ने) तरिका । 
 ```python
 df3 = df1.append(df2)
 ```
@@ -170,12 +170,12 @@ df.info()
 df.describe()
 ```
 
-# DataFrame को आयामहरू
+# DataFrame को सेप 
 ```python
 df.shape
 ```
 
-# विभिन्न सुविधाहरूको डाटा प्रकारहरू
+# बिभिन्न प्रकारका डाटा टाईपहरु हेर्ने 
 ```python
 df.dtypes
 ```
