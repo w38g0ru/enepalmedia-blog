@@ -5,7 +5,8 @@ date:   2024-03-08 10:10:10 +0545
 ---
 <p>
 यो Python स्क्रिप्टले फाइलहरूलाई त्यसको फाइल एक्सटेन्सनमा आधारमा डोकुमेन्ट्स फोल्डरको विशेष फोल्डरहरूमा सञ्चालित गर्दछ, आवश्यक छ भने गन फोल्डरहरू सिर्जना गर्दछ, र यदि डुप्लिकेटहरू पाइन्छन् भने फाइल नामहरूमा एक समय मिलाउँदछ। अन्तिम रुपमा, यो डाउनलोड्स फोल्डरबाट मूल फाइलहरूलाई हटाउँदछ।</p>
-<pre>
+
+```python
 import os
 import shutil
 import time
@@ -65,4 +66,4 @@ for file_name in os.listdir(downloads_folder):
 
 # Print message after deleting files
 print("All files deleted from Downloads folder.")
-</pre>
+```
