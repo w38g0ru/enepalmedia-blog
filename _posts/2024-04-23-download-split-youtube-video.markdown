@@ -4,8 +4,8 @@ title:  "युट्युब भिडियो सेगमेन्ट ड�
 date:   2024-04-23 13:24:12 +0545
 categories: tools, python
 ---
-s
-<pre>
+
+``` python
 # Install necessary libraries
 # !pip install pytube ffmpeg-python
 
@@ -34,4 +34,4 @@ for i, split_time in enumerate(split_times):
         ffmpeg.input(input_file, ss=start_time, to=end_time).output(output_file).run(overwrite_output=True, capture_stderr=True)
     except ffmpeg.Error as e:
         print(f"Error splitting segment {i+1}: {e.stderr.decode()}")
-</pre>
+```
