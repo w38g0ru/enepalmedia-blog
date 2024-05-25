@@ -14,7 +14,6 @@ import numpy as np
 import pandas as pd
 ```
 
-
 # DataFrame ट्रन्केशनलाई रोक्न Pandas प्रदर्शन विकल्पहरू समायोजन गरौं
 ```python
 pd.set_option('display.max_columns', None)
@@ -22,21 +21,21 @@ pd.set_option('display.max_rows', None)
 ```
 
 #### डाटा रिड (read) गर्ने तरिका
-Pandas ले तपाइँलाई विभिन्न ढाँचाहरूबाट डाटा पढ्न अनुमति दिन्छ, जस्तै CSV, JSON, र TSV। तल यी ढाँचाहरूबाट डाटा कसरी पढ्ने भन्ने उदाहरणहरू छन्:
+Pandas CSV, JSON, TSV जस्ता विभिन्न फर्म्याटका डाटा पढ्न अनुमति दिन्छ । जस्तो
 
-# CSV मा पढ्ने
+# CSV फाइलमा भएको डेटा पढ्ने
 ```python
 df = pd.read_csv('some_url_or_filepath.csv')
 print(df.head())
 ```
 
-# JSON मा पढ्ने
+# JSON फाईलमा भएको डेटा मा पढ्ने
 ```python
 df = pd.read_json('some_url_or_filepath.json')
 print(df.head())
 ```
 
-# TSV मा पढ्ने
+# TSV फाईलमा भएको डेटा मा पढ्ने
 ```python
 df = pd.read_csv('some_url_or_filepath.tsv', delimiter='\t', encoding='utf-8')
 print(df.head())
