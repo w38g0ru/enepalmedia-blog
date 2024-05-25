@@ -112,7 +112,7 @@ df.to_excel('shift-the-entire-row-left-or-right.xlsx', index=False)
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/shift-the-entire-row-left-or-right.xlsx) माथीको कोडले एउटै कोलममा नपरेका डाटाहरुलाई एउटै कोलममा सार्ने काम गर्दछ । 
 
-<pre>
+```python
 # Install necessary libraries
 # pip install openpyxl
     
@@ -142,12 +142,11 @@ for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=8, max_col=8):  #
 
 # Save the modified Excel file
 wb.save('List-with-Kantipur-numbers-to-English-numbers.xlsx')
-
-</pre>
+```
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/List-with-Kantipur-numbers-to-English-numbers.xlsx)  यो कोडले हामीले काम गर्दै गरेको एक्सल फाईलको आठौ रो मा भएको मोबाईल नम्बरलाई अंग्रेजीमा रुपान्तरण गर्ने काम गर्दछ । 
 
-<pre>
+```python
 import pandas as pd
 
 # Read the Excel file
@@ -159,11 +158,11 @@ df = df[columns_to_keep]
 
 # Save the updated DataFrame to a new Excel file
 df.to_excel("drop-all-columns-after-I.xlsx", index=False)
-</pre>
+```
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/drop-all-columns-after-I.xlsx)  माथीको कोडले डाटा भएको अन्तिम कोलम (I) पछीका सबै कोलमहरु डिलिट गर्ने काम गर्दछ । 
 
-<pre>
+```python
 import pandas as pd
 
 # Read the Excel file
@@ -185,11 +184,11 @@ df[email_columns] = email_addresses_split
 
 # Save the updated DataFrame to a new Excel file
 df.to_excel("split-the-values-in-column-H-and-I-into-separate-columns.xlsx", index=False)
-</pre>
+```
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/split-the-values-in-column-H-and-I-into-separate-columns.xlsx)  यो कोडले ईमेल र मोबाईल कोलमममा भएका टेक्स्टहरुलाई त्यसको भएको कमा को आधारमा छुट्टयार अन्तिमको कोलममा राख्ने काम गर्दछ । 
 
-<pre>
+```python
 import pandas as pd
 
 # Read the Excel file
@@ -205,12 +204,11 @@ df.rename(columns={"Unnamed: 0": "SN", "kmfOn g=": "REG_NO","Unnamed: 1":"RED_DA
 # print("New Headers:", df.columns.tolist())
 # Save the updated DataFrame to a new Excel file
 df.to_excel("rename-the-headers-all-data.xlsx", index=False)
-
-</pre>
+```
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/rename-the-headers-all-data.xlsx) माथीको कोडले अहिले सम्म हामीले काम गर्दै गरेको एक्सल फाईलको हेडीङ्ग परिवर्तन गर्दछ । 
 
-<pre>
+```python
 import pandas as pd
 
 # Read the Excel file
@@ -222,11 +220,11 @@ json_data = df.to_json(orient='records', lines=True)
 # Write the JSON data to a file
 with open('rename-the-headers-all-data.json', 'w') as f:
     f.write(json_data)
-</pre>
+```
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस](https://districts.enepal.net.np/rename-the-headers-all-data.json)  एक्सल फाईल फाईललाई जेसनमा परिवर्तन गर्दछ । 
 
-<pre>
+```python
 import pandas as pd
 
 # Load the Excel file
@@ -243,11 +241,11 @@ with pd.ExcelWriter('group-the-data-by-the-reg-year.xlsx') as writer:
         group.to_excel(writer, sheet_name=f'BS_{name}', index=False)
 
 print("Data divided into separate sheets based on the 4-digit numbers in column D.")
-</pre>
+```
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/group-the-data-by-the-reg-year.xlsx)  माथी कोडले एउटै सिटमा भएका सबै डाटाहरुलाई रजिष्ट्रेशन डेट (नेपाली) को आधारमा छुट्टा छुट्टै सिटमा डाटाहरु राख्ने काम गर्दछ । उदारणको लागी बि स २०७० मा दर्ता भएका वेबसाईटहरुलाई BS_2070 नाम गरेको सिटमा सेभ गरेर राख्छ । 
 
-<pre>
+```python
 # Install necessary libraries
 # pip install python-whois
     
@@ -324,12 +322,11 @@ df_updated = pd.concat([df.iloc[:, :email_3_index], whois_df, df.iloc[:, email_3
 # Write the updated DataFrame back to the same Excel file and sheet
 with pd.ExcelWriter('group-the-data-by-the-reg-year.xlsx', mode='a', if_sheet_exists='replace') as writer:
     df_updated.to_excel(writer, sheet_name='BS_2070', index=False)
-
-</pre>
+````
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/group-the-data-by-the-reg-year.xlsx) माथीको कोडले छुट्टा छु्ट्टै सिटमा भएको वेबसाईट ठेगाना (URL) को आधारमा त्यसको डेटा तान्ने काम गर्दछ । यसको लागि [पाईथन-हुईज](https://pypi.org/project/python-whois/) मोड्युलको प्रयोग गरीएको छ । यसो गर्दा सबै भन्दा माथीको सिटको नाम र तलको सिटको नाम एकै पटक परिवर्तन गर्नु पर्दछ । यसरि छुट्टा छुट्टै सिटमा राख्नुको कारण पनि हुईज (whois) डाटा तान्ने काम क्रमश होस । एकै पटक सर्भरलाई लोड नपरोस भन्नाले हो । 
 
-<pre>
+```python
 import pandas as pd
 
 # Load all sheets into a dictionary of DataFrames
@@ -342,11 +339,11 @@ df_all = pd.concat(dfs.values(), ignore_index=True)
 # Write the concatenated DataFrame to a new sheet in the same Excel file
 with pd.ExcelWriter('enlisted-sites-with-whois-info.xlsx', mode='a', if_sheet_exists='replace') as writer:
     df_all.to_excel(writer, sheet_name='ALL', index=False)
-</pre>
+```
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/enlisted-sites-with-whois-info.xlsx) यसमा ALL नाम गरेको सिटमा सबै साईटहरुको प्रेसकाउन्सिलले सार्वजनिक गरेको बिबरण र डोमेनको हुईज ईन्फर्मेशन छ । अब तपाई सँग डाटा छ - यसलाई कसरी प्रयोग गर्नु हुन्छ तपाईको हातमा । 
 
-<pre>
+```python
 import pandas as pd
 from io import BytesIO
 import requests
@@ -404,6 +401,6 @@ with pd.ExcelWriter('enlisted-sites-with-domain-expiry-month.xlsx') as writer:
 
 # Display the updated DataFrame
 print(df)
-</pre>
+```
 
 [माथीको कोडले तयार गरेेको फाईल हेर्न यहाँ क्लिक गर्नुहोस ।](https://districts.enepal.net.np/enlisted-sites-with-domain-expiry-month.xlsx) यसमा ALL नाम गरेको सिटमा सबै साईटहरुलाई डोमेन एक्सपाईरी मन्थाको आधारमा छुट्टा छुट्टै लिष्टमा राखीएको छ । 
