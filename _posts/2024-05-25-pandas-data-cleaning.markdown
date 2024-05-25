@@ -224,48 +224,75 @@ df.notnull().sum()
 ```
 
 # लेबल द्वारा स्तम्भहरू वा पंक्तिहरू पहुँच गर्नुहोस्
+```python
 df.loc['column_or_index_name']
+```
 
 # पूर्णांक स्थिति द्वारा स्तम्भहरू वा पंक्तिहरू पहुँच गर्नुहोस्
+```python
 df.iloc[5]
+```
 
 # पंक्ति/स्तम्भ जोडीबाट एकल मान पहुँच गर्नुहोस्
+```python
 df.at[2, 'column3']
+```
 
 # शब्दकोश अनुसार श्रेणीमा मानहरू म्याप गर्नुहोस्
+```python
 df['column1'].map({'value1': 'value11', 'value2': 'value22'})
+```
 
 # दुई मानहरूको बीचमा भएका पंक्तिहरूको boolean भेक्टर फिर्ता गर्नुहोस्
+```python
 df['column1'].between(1, 5, inclusive=True)
+```
 
 # श्रेणी वा स्केलर भन्दा बढी भएका पंक्तिहरूको boolean भेक्टर फिर्ता गर्नुहोस्
+```python
 df['column1'].gt(5)
 df['column1'].gt(df['column2'])
+```
 
 # श्रेणी वा स्केलर भन्दा कम भएका पंक्तिहरूको boolean भेक्टर फिर्ता गर्नुहोस्
+```python
 df['column1'].lt(5)
 df['column1'].lt(df['column2'])
+```
 
 # केवल मानहरू फिर्ता गर्नुहोस्, सूचकांक र स्तम्भ लेबलहरू ड्रप हुन्छ
+```python
 df.to_numpy()
+```
 
 # DataFrame को अक्षमा कार्य लागू गर्नुहोस्
+```python
 df.apply(np.sum, axis='index')
+```
 
 # DataFrame लाई ट्रान्सपोज गर्नुहोस् (स्तम्भहरू सूचकांक बन्ने, सूचकांक स्तम्भ बन्ने)
+```python
 df.T
+```
 
 # थप उपयोगी pandas कलहरू
+```python
 df.groupby()  # स्तम्भ द्वारा डाटा समूह गर्नुहोस्
 df.interpolate()  # हराइरहेको डाटा इन्टरपोल गर्नुहोस्
+```
 
 # pd.cut को साथ बिनिङ
+```python
 bins = pd.cut(df['column1'], 5)  # 5 बिनहरू बनाउनुहोस्
+```
 
 # छिटो साना तालिकाहरूको लागि क्रसट्याब
+```python
 pd.crosstab(bin_or_feature, bin_or_feature, normalize='columns')
+```
 
 # पिभट तालिका
+```python
 table = pd.pivot_table(df, values=['column1'], index=['column2'], columns=['column3'])
 table = pd.pivot_table(df, values=['column1'], index=['column2'], columns=['column3'], aggfunc=np.sum)
 ```
