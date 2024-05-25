@@ -14,7 +14,7 @@ import numpy as np
 import pandas as pd
 ```
 
-# DataFrame ट्रन्केशनलाई रोक्न Pandas प्रदर्शन विकल्पहरू समायोजन गरौं
+### DataFrame ट्रन्केशनलाई रोक्न Pandas प्रदर्शन विकल्पहरू समायोजन गरौं
 ```python
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
@@ -23,31 +23,31 @@ pd.set_option('display.max_rows', None)
 #### डाटा रिड (read) गर्ने तरिका
 Pandas CSV, JSON, TSV जस्ता विभिन्न फर्म्याटका डाटा पढ्न अनुमति दिन्छ । जस्तो
 
-# CSV फाइलमा भएको डेटा पढ्ने
+#### CSV फाइलमा भएको डेटा पढ्ने
 ```python
 df = pd.read_csv('some_url_or_filepath.csv')
 print(df.head())
 ```
 
-# JSON फाईलमा भएको डेटा मा पढ्ने
+#### JSON फाईलमा भएको डेटा मा पढ्ने
 ```python
 df = pd.read_json('some_url_or_filepath.json')
 print(df.head())
 ```
 
-# TSV फाईलमा भएको डेटा मा पढ्ने
+#### TSV फाईलमा भएको डेटा मा पढ्ने
 ```python
 df = pd.read_csv('some_url_or_filepath.tsv', delimiter='\t', encoding='utf-8')
 print(df.head())
 ```
 
-# फाइल अपलोड गर्दै (Google Colab को लागि)
+#### फाइल अपलोड गर्दै (Google Colab को लागि)
 ```python
 from google.colab import files
 upload = files.upload()
 ```
 
-# अपलोड गर्दा हेडरहरूको नाम परिवर्तन गर्नुहोस्
+#### अपलोड गर्दा हेडरहरूको नाम परिवर्तन गर्नुहोस्
 ```python
 url = 'some_url_or_filepath.csv'
 df = pd.read_csv(url, names=['column1', 'column2', 'column3'])
@@ -56,24 +56,24 @@ df = pd.read_csv(url, names=['column1', 'column2', 'column3'])
 # डाटा क्लिन गर्ने तरिका
 डाटा क्लिन गर्नका लागि धेरै चरणहरू पार गर्नु पर्दछ, जस्तै हेडिङ्गको नाम परिवर्तन गर्ने, भ्यालुहरु परिवर्तन गर्ने, र हराइरहेको डाटालाई ह्यान्डल गर्ने।
 
-# डेटा रिड गरे सँगै कोलमको नाम परिवर्तन गर्ने तरिका
+### डेटा रिड गरे सँगै कोलमको नाम परिवर्तन गर्ने तरिका
 ```python
 df = pd.read_csv(df, header=None)
 feature_map = {0: 'column1', 1: 'column2', 2: 'column3'}
 df.rename(columns=feature_map, inplace=True)
 ```
 
-# द्रुत अपरेशनको लागि 'category' प्रकारमा सेट गर्नुहोस्
+#### द्रुत अपरेशनको लागि 'category' प्रकारमा सेट गर्नुहोस्
 ```python
 df['column1'] = df['column1'].astype('category')
 ```
 
-# लेबल इन्कोडिङ
+### लेबल इन्कोडिङ
 ```python
 df['column1'] = df['column1'].cat.codes
 ```
 
-# बाइनरी इन्कोडिङ (category_encoders आवश्यक छ)
+### बाइनरी इन्कोडिङ (category_encoders आवश्यक छ)
 ```python
 !pip install category_encoders
 import category_encoders as ce
@@ -81,7 +81,7 @@ encoder = ce.BinaryEncoder(cols=['column1'])
 df = encoder.fit_transform(df)
 ```
 
-# हराइरहेको मानहरू भर्नुहोस्
+### हराइरहेको मानहरू भर्नुहोस्
 ```python
 df.fillna(0)  # मानहरूसँग खालीहरू भर्नुहोस्
 df.fillna(method='ffill')  # विधिको आधारमा भर्नुहोस्
