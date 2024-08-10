@@ -5,7 +5,7 @@ date:   2024-08-10 00:38:12 +0545
 ---
 तपाईंले दिएको कोडले एउटा इन्टरएक्टिव PDF फर्म क्रियट गर्ने गर्न गर्दछ । यसमा विभिन्न प्रश्नहरू छन त्यस प्रश्नको ठ्याक्क मुनी २ वटा टेक्स्ट बक्सहरू छन । यसले ReportLab लाईब्रेरीको प्रयोग गरी PDF फाइल बनाउँछ, जसमा शीर्षक, अप्सन, र उत्तरका लागि टेक्स्ट बक्सहरू समावेश गरीएको छ ।
 
-यहाँ मुख्य काम भनेको create_pdf_form भन्ने फङ्गसन हो, जसले JSON डेटा लोड गर्छ र त्यसलाई PDF मा रूपान्तरण गर्छ । यसमा विभिन्न प्रश्नहरूको लागि क्रमबद्ध शीर्षक र अप्सनहरुहरू राखिएको छ, र प्रत्येक प्रश्नको लागि दुई वटा टेक्स्ट बक्सहरू बनाईएको छ । एउटा टेक्स्ट बक्समा प्रश्नको अर्थ लेख्न सोधेको छ भने अर्कोमा उत्तर।
+> यहाँ मुख्य काम भनेको create_pdf_form भन्ने फङ्गसन हो, जसले JSON डेटा लोड गर्छ र त्यसलाई PDF मा रूपान्तरण गर्छ । यसमा विभिन्न प्रश्नहरूको लागि क्रमबद्ध शीर्षक र अप्सनहरुहरू राखिएको छ, र प्रत्येक प्रश्नको लागि दुई वटा टेक्स्ट बक्सहरू बनाईएको छ । एउटा टेक्स्ट बक्समा प्रश्नको अर्थ लेख्न सोधेको छ भने अर्कोमा उत्तर।
 
 ``` python
 !pip install reportlab
@@ -111,5 +111,66 @@ create_pdf_form(json_data, 'patient_form.pdf')
 
 print("PDF form created successfully!")
 
+
+```
+यो चाँही डाटा (data.json) हो । 
+
+``` json
+{
+  "systemLocation": {
+    "title": "System Location",
+    "options": [
+      "US-East",
+      "US-West",
+      "EU-Central",
+      "AP-Southeast",
+      "Other (specify manually)"
+    ],
+    "dependencies": [],
+    "explanation": "Which server or data center is the system located in?"
+  },
+  "dateOfDeployment": {
+    "title": "Date of Deployment",
+    "value": "",
+    "dependencies": [],
+    "explanation": "When was the application or service deployed?"
+  },
+  "userType": {
+    "title": "User Type",
+    "options": ["NEW", "RETURNING"],
+    "dependencies": [],
+    "explanation": "Is the user a new registrant or a returning user?"
+  },
+  "accessMethod": {
+    "title": "Access Method",
+    "options": ["ON-SITE", "REMOTE"],
+    "dependencies": [],
+    "explanation": "Is the user accessing the system on-site or remotely?"
+  },
+  "systemAdministrator": {
+    "title": "System Administrator",
+    "options": [
+      "SYSTEM ADMINISTRATOR",
+      "NETWORK ENGINEER",
+      "CLOUD ENGINEER",
+      "DEVOPS SPECIALIST",
+      "OTHER (SPECIFY MANUALLY)"
+    ],
+    "dependencies": [],
+    "explanation": "Which type of IT professional is managing the system?"
+  },
+  "operatingSystem": {
+    "title": "Operating System",
+    "options": ["LINUX", "WINDOWS", "MACOS", "OTHER (SPECIFY MANUALLY)"],
+    "dependencies": [],
+    "explanation": "Which operating system is running on the server?"
+  },
+  "securityIncident": {
+    "title": "Security Incident",
+    "options": ["YES", "NO"],
+    "dependencies": [],
+    "explanation": "Has there been a security incident reported recently?"
+  }
+}
 
 ```
