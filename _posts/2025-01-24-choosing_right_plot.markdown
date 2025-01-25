@@ -20,23 +20,11 @@ date: 2025-01-24 08:32:12 +0545
 ओहो , हामी यसलाई पाईथनमा ठ्याक्क यस्तै डेटा सेट बनाएर राखौ अनि त्यसलाई आवश्यकता अनुसार बिभिन्न प्लट बनाम्ला 
 ``` python 
 import pandas as pd
+import plotly.express as px
 
-# Creating the data as a dictionary
-data = {
-    'Year': [2018, 2018, 2019, 2019, 2020, 2020, 2021, 2021, 2022, 2022],
-    'Number of Male Students': [300, 300, 350, 350, 400, 400, 450, 450, 500, 500],
-    'Number of Female Students': [250, 250, 280, 280, 300, 300, 350, 350, 400, 400],
-    'Type of School': ['Public', 'Public', 'Private', 'Private', 'Missionary', 'Missionary', 'Public', 'Public', 'Private', 'Private'],
-    'Gender': ['Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female'],
-    'Total Pass Count': [550, 550, 630, 630, 700, 700, 800, 800, 900, 900],
-    'Pass Percentage (%)': ['85%', '85%', '88%', '88%', '89%', '89%', '90%', '90%', '92%', '92%']
-}
-
-# Creating the DataFrame
-df = pd.DataFrame(data)
-
-# Display the DataFrame
-print(df)
+# Gapminder डेटा लोड गर्ने
+url = "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
+df = pd.read_csv(url)
 
 ```
 
