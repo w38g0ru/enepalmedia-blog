@@ -20,11 +20,24 @@ date: 2025-01-24 08:32:12 +0545
 ओहो , हामी यसलाई पाईथनमा ठ्याक्क यस्तै डेटा सेट बनाएर राखौ अनि त्यसलाई आवश्यकता अनुसार बिभिन्न प्लट बनाम्ला 
 ``` python 
 import pandas as pd
-import plotly.express as px
 
-# Gapminder डेटा लोड गर्ने
-url = "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
-df = pd.read_csv(url)
+# Data for iPhone models
+iphone_data = {
+    "Model": ["iPhone 10", "iPhone 11", "iPhone 12", "iPhone 13", "iPhone 14", "iPhone 15"],
+    "Release Year": [2017, 2019, 2020, 2021, 2022, 2023],
+    "OS Version": ["iOS 11", "iOS 13", "iOS 14", "iOS 15", "iOS 16", "iOS 17"],
+    "Price (USD)": [699, 799, 999, 1099, 1199, 1299],
+    "Price (NPR)": [72000, 88000, 115000, 130000, 145000, 160000],
+    "Storage": [64, 128, 256, 512, 1024, 2048],
+    "Battery Life (hrs)": [10, 12, 14, 15, 16, 18],
+    "Screen Size": ["5.8 inches", "6.1 inches", "6.1 inches", "6.1 inches", "6.1 inches", "6.1 inches"]
+}
+
+# Create a DataFrame using pandas
+df = pd.DataFrame(iphone_data)
+
+# Display the DataFrame
+df
 
 ```
 
