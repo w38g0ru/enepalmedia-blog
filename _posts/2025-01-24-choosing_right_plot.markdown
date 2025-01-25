@@ -49,7 +49,13 @@ print(df)
 px.scatter(data, x="Year", y="Pass Percentage (%)", title="Relation Between Year and Pass Percentage")
 ```
 - Line Plot 📉 → वर्ष अनुसार पास हुने विद्यार्थीहरूको संख्या
+``` python
+px.line(data, x="Year", y="Pass Percentage (%)", title="Relation Between Year and Pass Percentage")
+```
 - Regression Plot 📏 → ट्रेन्ड हेर्न (जस्तै, पछिल्ला वर्षहरूमा पास हुने विद्यार्थीहरूको प्रतिशत)
+``` python
+px.scatter(data, x="Year", y="Pass Percentage (%)", title="Relation Between Year and Pass Percentage",trendline="ols"))
+```
 यसरी, यी चार्टहरूको प्रयोग गरेर हामी सजिलै ग्राफ तयार गर्न सक्छौं।
 
 # Numeric vs Categorical
