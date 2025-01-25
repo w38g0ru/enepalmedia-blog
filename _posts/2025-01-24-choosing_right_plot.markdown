@@ -4,36 +4,39 @@ title: "डेटा एनालाईसिस गर्दा सहि प�
 date: 2025-01-24 08:32:12 +0545
 ---
 
-| Model     | Release Year | Price (USD) | Price (NPR) | Storage | Battery Life (hrs) | Screen Size |
-|-----------|--------------|-------------|-------------|---------|---------------------|-------------|
-| iPhone 10 | 2017         | 699         | 72,000      | 64      | 10                  | 5.8 inches  |
-| iPhone 11 | 2019         | 799         | 88,000      | 128     | 12                  | 6.1 inches  |
-| iPhone 12 | 2020         | 999         | 115,000     | 256     | 14                  | 6.1 inches  |
-| iPhone 13 | 2021         | 1099        | 130,000     | 512     | 15                  | 6.1 inches  |
-| iPhone 14 | 2022         | 1199        | 145,000     | 1024    | 16                  | 6.1 inches  |
-| iPhone 15 | 2023         | 1299        | 160,000     | 2048    | 18                  | 6.1 inches  |
+| Model               | Launch Year | Engine Type     | Engine Capacity (cc) | Price (INR) | Sales (Units) | City Mileage (km/l) | Top Speed (km/h) |
+|---------------------|-------------|-----------------|-----------------------|-------------|----------------|----------------------|-------------------|
+| Bullet 350          | 2000        | Single-Cylinder | 346                   | 150,000     | 10,000         | 35                   | 120               |
+| Classic 350         | 2005        | Single-Cylinder | 349                   | 200,000     | 30,000         | 40                   | 130               |
+| Meteor 350          | 2020        | Single-Cylinder | 349                   | 230,000     | 25,000         | 35                   | 140               |
+| Himalayan           | 2016        | Single-Cylinder | 411                   | 250,000     | 15,000         | 30                   | 140               |
+| Interceptor 650     | 2018        | Parallel Twin   | 648                   | 350,000     | 12,000         | 25                   | 160               |
+| Continental GT 650  | 2018        | Parallel Twin   | 648                   | 350,000     | 8,000          | 20                   | 160               |
+
 
 
 ओहो , हामी यसलाई पाईथनमा ठ्याक्क यस्तै डेटा सेट बनाएर राखौ अनि त्यसलाई आवश्यकता अनुसार बिभिन्न प्लट बनाम्ला 
 ``` python 
 import pandas as pd
 
-# Data for iPhone models
-iphone_data = {
-    "Model": ["iPhone 10", "iPhone 11", "iPhone 12", "iPhone 13", "iPhone 14", "iPhone 15"],
-    "Release Year": [2017, 2019, 2020, 2021, 2022, 2023],
-    "Price (USD)": [699, 799, 999, 1099, 1199, 1299],
-    "Price (NPR)": [72000, 88000, 115000, 130000, 145000, 160000],
-    "Storage": [64, 128, 256, 512, 1024, 2048],
-    "Battery Life (hrs)": [10, 12, 14, 15, 16, 18],
-    "Screen Size": ["5.8 inches", "6.1 inches", "6.1 inches", "6.1 inches", "6.1 inches", "6.1 inches"]
+# Dataset: Royal Enfield Bike Sales Data
+data = {
+    'Model': ['Bullet 350', 'Classic 350', 'Meteor 350', 'Himalayan', 'Interceptor 650', 'Continental GT 650'],
+    'Launch Year': [2000, 2005, 2020, 2016, 2018, 2018],
+    'Engine Type': ['Single-Cylinder', 'Single-Cylinder', 'Single-Cylinder', 'Single-Cylinder', 'Parallel Twin', 'Parallel Twin'],
+    'Engine Capacity (cc)': [346, 349, 349, 411, 648, 648],
+    'Price (INR)': [150000, 200000, 230000, 250000, 350000, 350000],
+    'Sales (Units)': [10000, 30000, 25000, 15000, 12000, 8000],
+    'City Mileage (km/l)': [35, 40, 35, 30, 25, 20],
+    'Top Speed (km/h)': [120, 130, 140, 140, 160, 160]
 }
 
-# Create a DataFrame using pandas
-df = pd.DataFrame(iphone_data)
+# Convert to DataFrame
+df = pd.DataFrame(data)
 
-# Display the DataFrame
+# Show the dataset
 df
+
 
 ```
 
