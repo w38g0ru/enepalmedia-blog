@@ -1,5 +1,5 @@
 ---
-title: "pandas को आधारभूत ट्यूटोरियल (नेपाली)"
+title: "pandas को बेसिक ट्यूटोरियल"
 author: "Anish Bhattarai"
 date: "`r Sys.Date()`"
 format: html
