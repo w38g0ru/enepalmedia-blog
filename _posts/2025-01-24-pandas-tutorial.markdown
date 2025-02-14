@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "डेटा एनालाईसिस गर्दा सहि प्लट छनौट गर्ने तरिका"
-date: 2025-01-24 08:32:12 +0545
+title: "Python लाईब्रेरी Pandas ट्युटोरियल "
+date: 2025-02-13 08:45:12 +0545
 ---
 
 | Model               | Launch Year | Engine Type     | Engine Capacity (cc) | Price (INR) | Sales (Units) | City Mileage (km/l) | Top Speed (km/h) |
