@@ -35,17 +35,18 @@ categories: tips
    - यो base64 एन्कोडेड हुनेछ।  
 
    उदाहरण स्वरूप फाइलको सान्दर्भिक भाग यस्तो देखिन सक्छ:
-   '''xml
+   ``` xml
    <X_BROADCOM_COM_LoginCfg>
        <AdminPassword>YURtOEglTWRBAA==</AdminPassword>
        <SupportPassword>bkU3akElNW0A</SupportPassword>
    </X_BROADCOM_COM_LoginCfg>
-   '''
+   ```
 5. स्ट्रिङ decode गर्न:
-   https://www.base64decode.or मा जानुहोस्।
-   <SupportPassword> ट्याग भित्रको स्ट्रिङ पेस्ट गरेर decode गर्नुहोस्।
-   decode गर्दा अन्त्यमा "�" जस्तो character आएमा हटाउनुहोस्, यो केवल garbage trailing char हो।
-   decode गरेको पासवर्ड प्रयोग गरेर लगइन गर्नुहोस्: suport/${password you got}
+   - https://www.base64decode.or मा जानुहोस्।
+   - <SupportPassword> ट्याग भित्रको स्ट्रिङ पेस्ट गरेर decode गर्नुहोस्।
+   - decode गर्दा अन्त्यमा "�" जस्तो character आएमा हटाउनुहोस्, यो केवल garbage trailing char हो।
+   - decode गरेको पासवर्ड प्रयोग गरेर लगइन गर्नुहोस्: suport/${password you got}
+     
 ---
 
 ## 3. Parental Control र Time Restriction सेटअप
@@ -92,6 +93,3 @@ Support लगइन गरेपछि मेनुमा **Advance Setup → S
 3. **Save** गर्नुहोस्।  
 
 अब त्यो वेबसाइट तपाईंको घरको नेटवर्कमा खोल्न मिल्दैन।  
-
-- [नेपाल टेलिकम – FTTH Router User Guide](https://ntc.net.np)  
-- [Parental Control & Time Restriction Basics (TechTarget)](https://www.techtarget.com/searchsecurity/definition/parental-control)  
