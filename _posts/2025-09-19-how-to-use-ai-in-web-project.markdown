@@ -7,8 +7,7 @@ title: "VS Code मार्फत वेब प्रोजेक्टमा C
 AI अब coding मात्र होइन, software development workflow को अनिवार्य हिस्सा बन्दै गएको छ। OpenAI को ChatGPT, Anthropic को Claude, र Deepseek जस्ता LLM (Large Language Models) ले डेभलपरको प्रोडक्टिभिटी कयौ गुणा बढाइरहेका छन्। यसको प्रयोग शुरु गरी नसकेकाहरुको मनमा प्रश्न उठ्न सक्छ  VS Code मा यी AI कसरी जोड्ने? Subscription भन्दा API किन सस्तो हुन्छ? आफ्नो प्रोजेक्ट वा working directory भित्र कसरी integrate गर्ने?
 यो लेखमा हामी step-by-step हेर्नेछौं: Installation → Integration → Prompt Engineering → Cost Management बारेमा कुरा गर्छौ । 
 
-> Visual Studio Code सबैभन्दा लोकप्रिय code editor हो, र यसमा AI ईन्ट्रीग्रेट गर्दा फाईदा धेरै छन्। Coding गर्दा हुने repetitive काम घट्छ, boilerplate code तुरुन्त generate हुन्छ, error debugging सजिलो हुन्छ, लामो वा अस्तव्यस्त code > लाई refactor गरेर readable बनाउन सकिन्छ, documentation स्वतः generate हुन्छ, र नयाँ framework वा library सिक्दा AI बाट live help पनि पाइन्छ। सरल शब्दमा भन्नुपर्दा, AI VS Code ईन्ट्रीग्रेट गर्दा तपाईँले pair-programmer जस्तै
-> support पाउनुहुन्छ।
+> ***Visual Studio Code सबैभन्दा लोकप्रिय code editor हो, र यसमा AI ईन्ट्रीग्रेट गर्दा फाईदा धेरै छन्। Coding गर्दा हुने repetitive काम घट्छ, boilerplate code तुरुन्त generate हुन्छ, error debugging सजिलो हुन्छ, लामो वा अस्तव्यस्त code लाई refactor गरेर readable बनाउन सकिन्छ, documentation स्वतः generate हुन्छ, र नयाँ framework वा library सिक्दा AI बाट live help पनि पाइन्छ। सरल शब्दमा भन्नुपर्दा, AI VS Code ईन्ट्रीग्रेट गर्दा तपाईँले pair-programmer जस्तै support पाउनुहुन्छ।**
 
 यसको लागि सुरुमा केही कुरा आवश्यक हुन्छ। पहिलो भनेको VS Code नै हो , जुन आधिकारिक वेबसाइटबाट डाउनलोड गर्न सकिन्छ। त्यसपछि, तपाईँलाई AI provider को API Key चाहिन्छ — ChatGPT को लागि OpenAI बाट, Claude को लागि Anthropic बाट, र Deepseek को लागि Deepseek platform बाट। अन VS Code मा AI plugin वा extension install गर्नुपर्छ। अहिले प्रचलित extension हरुमा Continue, CodeGPT र ChatGPT – EasyCode पर्छन्, जुन VS Code Marketplace बाट सजिलै उपलब्ध छन्।
 
@@ -72,6 +71,7 @@ echo $response['choices'][0]['message']['content'];
 यो pattern ले backend मा सुरक्षित तरिकाले API key प्रयोग गर्छ, response JSON मा फर्काउँछ, र frontend (React/Vue/Tailwind UI वा साधारण view) मा देखाउन सजिलो बनाउँछ।
 
 ------------------------------------------------------------------------
+
 
 
 ### Prompt Engineering — राम्रो Prompt लेख्ने कला
