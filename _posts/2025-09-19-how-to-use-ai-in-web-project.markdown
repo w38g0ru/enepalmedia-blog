@@ -4,7 +4,7 @@ layout: post
 title: "VS Code मार्फत वेब प्रोजेक्टमा ChatGPT, Claude र Deepseek AI कसरी प्रयोग गर्ने?"
 ---
 
-AI अब coding मात्र होइन, software development workflow को अनिवार्य हिस्सा बन्दै गएको छ। [OpenAI](https://openai.com/) को [ChatGPT](https://chatgpt.com/), [Anthropic](https://www.anthropic.com/) को [Claude](https://claude.ai/), र Deepseek जस्ता LLM (Large Language Models) ले डेभलपरको प्रोडक्टिभिटी कयौ गुणा बढाइरहेका छन्। यसको प्रयोग शुरु गरी नसकेकाहरुको मनमा प्रश्न उठ्न सक्छ  VS Code मा यी AI कसरी जोड्ने? Subscription भन्दा API किन सस्तो हुन्छ? आफ्नो प्रोजेक्ट वा working directory भित्र कसरी integrate गर्ने?
+AI अब coding मात्र होइन, software development workflow को अनिवार्य हिस्सा बन्दै गएको छ। [OpenAI](https://openai.com/) को [ChatGPT](https://chatgpt.com/), [Anthropic](https://www.anthropic.com/) को [Claude](https://claude.ai/), र [Deepseek](https://www.deepseek.com/) जस्ता LLM (Large Language Models) ले डेभलपरको प्रोडक्टिभिटी कयौ गुणा बढाइरहेका छन्। यसको प्रयोग शुरु गरी नसकेकाहरुको मनमा प्रश्न उठ्न सक्छ  VS Code मा यी AI कसरी जोड्ने? Subscription भन्दा API किन सस्तो हुन्छ? आफ्नो प्रोजेक्ट वा working directory भित्र कसरी integrate गर्ने?
 यो लेखमा हामी step-by-step हेर्नेछौं: Installation → Integration → Prompt Engineering → Cost Management बारेमा कुरा गर्छौ । 
 
 > ***Visual Studio Code सबैभन्दा लोकप्रिय code editor हो, र यसमा AI ईन्ट्रीग्रेट गर्दा फाईदा धेरै छन्। Coding गर्दा हुने repetitive काम घट्छ, boilerplate code तुरुन्त generate हुन्छ, error debugging सजिलो हुन्छ, लामो वा अस्तव्यस्त code लाई refactor गरेर readable बनाउन सकिन्छ, documentation स्वतः generate हुन्छ, र नयाँ framework वा library सिक्दा AI बाट live help पनि पाइन्छ। सरल शब्दमा भन्नुपर्दा, AI VS Code ईन्ट्रीग्रेट गर्दा तपाईँले pair-programmer जस्तै support पाउनुहुन्छ।**
