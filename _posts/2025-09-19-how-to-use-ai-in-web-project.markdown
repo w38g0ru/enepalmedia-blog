@@ -18,11 +18,11 @@ Extension install गर्ने प्रक्रिया पनि सज�
 अब कुरा गरौँ आफ्नो working directory वा प्रोजेक्टमा AI integrate गर्ने बारेमा। मानौँ तपाईँ CodeIgniter 4 र Tailwind CSS प्रोजेक्टमा AI जोड्न चाहनुहुन्छ भने backend मा एउटा helper library बनाउन सकिन्छ, जसले OpenAI API सँग request पठाएर response ल्याउँछ। त्यसको लागि cURL प्रयोग गरेर https://api.openai.com/v1/chat/completions endpoint मा request पठाउने र user prompt अनुसार response फर्काउने व्यवस्था गर्न सकिन्छ। Controller बाट सो library call गरेर response frontend (React, Vue वा Tailwind UI) मा देखाउन सकिन्छ। यसरी AI feature project को working directory भित्र integrate हुन्छ।
 
 
-Working Directory / Project मा Integration
+### Working Directory / Project मा Integration
 
-यहाँ एउटा साधारण तर practical उदाहरण छ — CodeIgniter 4 + Tailwind प्रोजेक्टमा backend बाट OpenAI call गर्ने तरिका।
+***यहाँ एउटा साधारण तर practical उदाहरण छ — CodeIgniter 4 + Tailwind प्रोजेक्टमा backend बाट OpenAI call गर्ने तरिका।***
 
-Step 1: Helper Library (app/Libraries/OpenAI.php)
+### Step 1: Helper Library (app/Libraries/OpenAI.php)
 
 ```php
 <?php
@@ -60,57 +60,51 @@ class OpenAI {
 }
 ```
 
-Step 2: Controller बाट Call गर्ने उदाहरण
+### Step 2: Controller बाट Call गर्ने उदाहरण ###
 
+```php
 $ai = new \App\Libraries\OpenAI();
 $response = $ai->ask("Explain CodeIgniter 4 validation in Nepali");
 echo $response['choices'][0]['message']['content'];
-
+```
 
 यो pattern ले backend मा सुरक्षित तरिकाले API key प्रयोग गर्छ, response JSON मा फर्काउँछ, र frontend (React/Vue/Tailwind UI वा साधारण view) मा देखाउन सजिलो बनाउँछ।
+
+------------------------------------------------------------------------
+
 
 ### Prompt Engineering — राम्रो Prompt लेख्ने कला
 
 AI बाट प्रभावकारी नतीजा निकाल्न prompt नै सबैभन्दा महत्वपूर्ण हुन्छ। राम्रो prompt सामान्यतः Context + Instruction + Desired Output Format हुन्छ। केहि प्रयोगी example हरु:
 
-## Bug Fixing
+***Bug Fixing***
 
 Here is my error: [paste error]
 Here is my code: [paste code]
 Fix the issue and explain what was wrong.
 
 
-## Refactoring
+***Refactoring***
 
 Refactor the following PHP code to be cleaner, more secure, and follow best practices. Add comments in Nepali.
 [paste code]
 
 
-## Documentation
+***Documentation***
 
 Generate detailed documentation in Nepali for this CodeIgniter 4 controller:
 [paste controller code]
 
 
-## Learning
+***Learning***
 
 Teach me CodeIgniter 4 sessions step by step in Nepali, with simple examples.
 
 
-### Pro Tip: role-play गराएर AI लाई context दिनुहोस्, जस्तै:
+***Pro Tip: role-play गराएर AI लाई context दिनुहोस्, जस्तै:***
 
 Act as a senior CodeIgniter 4 developer. Review my code and suggest performance improvements.
 
-API Key सुरक्षित राख्ने तरिका
-
-API key कहिल्यै frontend मा नहाल्नुहोस्।
-
-Development/Production मा .env फाइल वा environment variables प्रयोग गर्नुहोस्।
-
-Cloud मा deploy गर्दा AWS Secrets Manager, GCP Secret Manager वा Azure Key Vault जस्ता services प्रयोग गरेर सुरक्षित राख्नुहोस्।
-
-ध्यान दिनुहोस्: API key leak भएमा अनावश्यक बिल र सुरक्षा जोखिम आउन सक्छ।
-
-निष्कर्ष
+------------------------------------------------------------------------
 
 VS Code मा ChatGPT, Claude वा Deepseek API जोड्दा coding workflow धेरै productive हुन्छ। Subscription भन्दा API cost-efficient हुन्छ, विशेषगरी कम प्रयोगकर्ताका लागि। Extension install गरेर editor भित्रै AI प्रयोग गर्न सकिन्छ, अनि project वा working directory मा integrate गरेर आफ्नै custom AI features बनाउन सकिन्छ। सबैभन्दा महत्त्वपूर्ण कुरा भनेको राम्रो prompt लेख्ने र API key सुरक्षित राख्ने हो। सुरु गर्न सजिलो छ — VS Code डाउनलोड गर्नुहोस्, Extension install गर्नुहोस्, API Key सेट गर्नुहोस्, र AI लाई आफ्नो coding workflow मा pair-programmer जस्तै प्रयोग गर्न सुरु गर्नुहोस्।
