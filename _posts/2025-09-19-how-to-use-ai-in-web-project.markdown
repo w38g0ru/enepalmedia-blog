@@ -6,7 +6,7 @@ title: "VS Code मार्फत वेब प्रोजेक्टमा C
 
 AI अब coding मात्र होइन, software development workflow को अनिवार्य हिस्सा बन्दै गएको छ। [OpenAI](https://openai.com/) को [ChatGPT](https://chatgpt.com/), [Anthropic](https://www.anthropic.com/) को [Claude](https://claude.ai/), र [Deepseek](https://www.deepseek.com/) जस्ता LLM (Large Language Models) ले डेभलपरको प्रोडक्टिभिटी कयौ गुणा बढाइरहेका छन्। यसको प्रयोग शुरु गरी नसकेकाहरुको मनमा प्रश्न उठ्न सक्छ  VS Code मा यी AI कसरी जोड्ने? Subscription भन्दा API किन सस्तो हुन्छ? आफ्नो प्रोजेक्ट वा working directory भित्र कसरी integrate गर्ने?
 
-यो लेख अरु कसैले पढेर सुनाई दिओस भन्ने चाहनु हुन्छ भने तलको बटनमा क्लिक गरेर अडियो प्ले गर्नुहोस । 
+यो लेख अरु [कसैले पढेर सुनाई दिओस](https://luvvoice.com/) भन्ने चाहनु हुन्छ भने तलको बटनमा क्लिक गरेर अडियो प्ले गर्नुहोस । 
 <audio controls>
   <source src="{{ '/audio/how-to-ai.mp3' | relative_url }}" type="audio/mp3">
   Your browser does not support the audio element.
